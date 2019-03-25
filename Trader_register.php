@@ -76,8 +76,8 @@ if(strpbrk($fname, '1234567890'))
 <script src="gumby/js/libs/jquery-2.0.2.min.js"></script>
     <script src="gumby/js/libs/gumby.min.js"></script>
 
-    <?php include('searchetc.php');
-    include('navbar.php')?>
+   <?php include('navbar.php');
+    include('searchetc.php');?>
 
     <div id="wrapper">
     <div class="row" id="container">

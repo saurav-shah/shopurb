@@ -73,8 +73,8 @@ if(strpbrk($fname, '1234567890'))
 <div id="heading">
         <h1>SHOPURB</h1>
     </div>
-    <?php include('searchetc.php');
-    include('navbar.php')?>
+    <?php include('navbar.php');
+    include('searchetc.php');?>
 <script src="gumby/js/libs/jquery-2.0.2.min.js"></script>
     <script src="gumby/js/libs/gumby.min.js"></script>
 
