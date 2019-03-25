@@ -1,0 +1,115 @@
+nav
+{
+	background-color: gray; 
+	text-align: left;
+	margin: 0px 0px 0px 0px;
+	width: 100%;
+	min-height: 90px;
+	padding-top: 30px;
+	font-size: 18px;
+}
+nav a
+{
+	padding: 20px;
+	color: #ffffff;
+}
+nav a:hover
+{
+	color: #ffff33;
+	cursor: pointer;
+}
+
+footer
+{
+	background-color:white;
+	color: black;
+	min-height: 180px;
+	text-align: left;
+	padding: 50px;
+	font-size: 18px;
+}
+footer a, footer a:visited{
+    color: black;
+}
+#wrapper
+{
+	padding-top: 10px;
+	background-color: white;
+    
+   
+}
+body
+{
+	margin: 5%;
+	background: url('../images/bg.jpg');
+	background-position: fixed;
+	background-repeat: repeat-y;
+	background-size: cover;
+	background-attachment: scroll;
+}
+#heading
+{
+    background-color: white;
+    color: black;
+    text-align: center;
+}
+#copyright, #social
+{
+	text-align: center;
+}
+.search
+{
+	background-color: gray;
+	
+}
+
+.search a{
+
+    color: white;
+}
+
+.item{
+    margin-left: 50px;
+    float: left;
+}
+.item p{
+    color: white;
+}
+
+h2
+{
+	text-align: center;
+}
+.bold
+{
+	font-weight: bolder;
+}
+
+#products{
+    margin-top: 30px;    
+}
+
+#products li{
+    margin-bottom: 5px;
+}
+
+#products .title{
+    background-color:black; 
+    color: white; 
+    border-radius: 3px; 
+    margin-bottom:5px
+}
+
+.product_box{
+    
+   width: 30%;
+   height: 210px;   
+   float: left;
+   margin-right: 20px;   
+   margin-bottom: 200px;
+}
+
+.product_box img {
+    height: 100%;
+    width: 100%;
+}

@@ -1,0 +1,41 @@
+#wrapper
+{
+    min-height: 500px;
+}
+#wrapper input, #wrapper textarea
+{
+    border: 0;
+    border-bottom: 1px solid black;
+    margin-bottom: 60px;
+    width: 90%;
+}
+#wrapper textarea
+{
+	min-height: 80px;	
+}
+#button
+{
+    width: 70%;
+    border: 1px solid black;
+}
+#button input
+{
+    border-bottom: 0px;
+    text-align: center
+}
+h3, #wrapper{
+    text-align: center;
+}
+#button:hover
+{
+    border: 1px solid white;
+    background-color: black;
+    color: white;
+    font-weight: bolder;
+}
+#wrapper
+{
+    min-width: 450px;
+}
+
+
