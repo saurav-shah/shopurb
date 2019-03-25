@@ -71,7 +71,7 @@ if(strpbrk($fname, '1234567890'))
 </head>
 <body>
 <div id="heading">
-        <h1>SHOPURB</h1>
+        <img src="images/banner.png" alt="banner">
     </div>
 <script src="gumby/js/libs/jquery-2.0.2.min.js"></script>
     <script src="gumby/js/libs/gumby.min.js"></script>

@@ -1,5 +1,6 @@
 
 <div class="search">
+   <hr class="line">
     <br>
     <div class="item">
     <a href="login.php">Login</a> |
@@ -11,7 +12,7 @@
 
         <form action="details.php" method="post" >
 
-            <input type="text" name="user_query" placeholder="Search Product...">
+            <input type="text" name="user_query" placeholder="Search Product..." size="50">
             <input type="submit" name="search" value="Search">
         </form>
     </div>
@@ -29,4 +30,6 @@
     
     <br><br>
 </div>
-<br>
+
+
+

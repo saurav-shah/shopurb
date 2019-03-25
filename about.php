@@ -12,7 +12,7 @@
 </head>
 <body>
 <div id="heading">
-        <h1>SHOPURB</h1>
+        <img src="images/banner.png" alt="banner">
     </div>
 <?php include('navbar.php');
     include('searchetc.php');?> 
@@ -30,8 +30,9 @@
     Nihil veritatis id, corporis culpa cupiditate aspernatur sit, error officiis magni, eligendi impedit reprehenderit.
     </p>
     </div>
+    
 </div>
-<br/>
+<hr class="line">
 <footer>
 <?php include('footer.php')?>
 </footer>

@@ -16,7 +16,7 @@
     <script src="gumby/js/libs/gumby.min.js"></script>
     <div class= "wrapper">
     <div id="heading">
-        <h1>SHOPURB</h1>
+        <img src="images/banner.png" alt="banner">
     </div>
     <?php include('navbar.php');
     include('searchetc.php');?> 

@@ -12,7 +12,7 @@
 </head>
 <body>
 <div id="heading">
-        <h1>SHOPURB</h1>
+        <img src="images/banner.png" alt="banner">
     </div>
 <?php include('navbar.php');
     include('searchetc.php');?> 
@@ -28,8 +28,8 @@
     </p>
     </div>
 </div>
-</div>
-<br/>
+
+<hr class="line">
 <footer>
 <?php include('footer.php')?>
 </footer>

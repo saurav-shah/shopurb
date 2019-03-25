@@ -1,21 +1,20 @@
 nav
 {
 	background-color: gray; 
-	text-align: left;
-	margin: 0px 0px 0px 0px;
-	width: 100%;
-	min-height: 90px;
-	padding-top: 30px;
-	font-size: 18px;
+	text-align: center;
+	margin: 0px;
+	width: 100%;	
+	padding: 30px;
+	
 }
 nav a
 {
 	padding: 20px;
-	color: #ffffff;
+	color: #ffffff !important;
 }
 nav a:hover
 {
-	color: #ffff33;
+	color: #ffff33 !important;
 	cursor: pointer;
 }
 
@@ -33,7 +32,7 @@ footer a, footer a:visited{
 }
 #wrapper
 {
-	padding-top: 10px;
+	
 	background-color: white;
     
    
@@ -69,7 +68,7 @@ body
 }
 
 .item{
-    margin-left: 50px;
+    margin-left: 100px;
     float: left;
 }
 .item p{
@@ -79,6 +78,7 @@ body
 h2
 {
 	text-align: center;
+    padding: 50px;
 }
 .bold
 {
@@ -112,4 +112,8 @@ h2
 .product_box img {
     height: 100%;
     width: 100%;
+}
+
+.line  {
+    margin: 0;
 }

@@ -26,12 +26,12 @@ include ('functions/functions.php');
 
 <body>
     <div id="heading">
-        <h1>SHOPURB</h1>
+        <img src="images/banner.png" alt="banner">
     </div>
 <?php include('navbar.php');
     include('searchetc.php');?> 
 
-    <br />
+    
 
     <!-- PRODUCT LISTING START-->
     <div id="wrapper">
@@ -74,13 +74,13 @@ include ('functions/functions.php');
             </div>
             <!-- right side end-->
         </div>
-
+        <hr>
     </div>
 
     <!-- PRODUCT LISTING END-->
 
 
-    <br />
+    
     <footer>
         <?php include('footer.php')?>
     </footer>
