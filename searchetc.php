@@ -10,7 +10,7 @@
 
 <div class="item">
 
-        <form action="details.php" method="post" >
+        <form action="results.php" method="get" enctype="multipart/form-data" >
 
             <input type="text" name="user_query" placeholder="Search Product..." size="50">
             <input type="submit" name="search" value="Search">
