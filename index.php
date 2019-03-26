@@ -77,9 +77,9 @@
 
                     <center>
                         <p><div class='default badge'>Price: $$prod_price</div></p>
-                        <div class='pretty small warning btn'><a href='shop.php?add_cart=$prod_id'>Add to Cart</a></div>
+                        <div class='small warning btn'><a href='shop.php?add_cart=$prod_id'>Add to Cart</a></div>
 
-                        <div class='pretty small success btn'><a href='details.php?pro_id=$prod_id'>Details</a></div>
+                        <div class='small success btn'><a href='details.php?pro_id=$prod_id'>Details</a></div>
                     </center>
 
                 </div>
