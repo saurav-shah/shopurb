@@ -125,7 +125,7 @@ if(strpbrk($fname, '1234567890'))
    
 </div>
 </div>
-<br/>
+<hr class="line">
 <!--FOOTER-->
     <footer>
     <?php include('footer.php')?>

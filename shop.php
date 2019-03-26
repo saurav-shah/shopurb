@@ -74,12 +74,12 @@ include ('functions/functions.php');
             </div>
             <!-- right side end-->
         </div>
-        <hr>
+        
     </div>
 
     <!-- PRODUCT LISTING END-->
 
-
+<hr class="line">
     
     <footer>
         <?php include('footer.php')?>

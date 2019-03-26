@@ -76,7 +76,7 @@
         </div>
         </div>
 </div>
-<br/>
+<hr class="line">
         <!--Footer-->
 <footer>
    <?php include('footer.php')?>
