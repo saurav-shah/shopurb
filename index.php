@@ -28,12 +28,12 @@
 <div class="row theme-default">
     <div class="nivoSlider" id="slider">
 
-          <img src="images/jamaican.jpg" data-thumb="images/jamaican.jpg" alt="" title="The Jammy's,Thamel Kathmandu"/>
-          <img src="images/tuna.jpg" data-thumb="images/tuna.jpg" alt="" title="The SubURB,jhamsikhel Kathmandu" />
-          <img src="images/fishnchips.jpg" data-thumb="images/fishnchips.jpg" alt="" title="Tamarind,jhamsikhel Lalitpur" /> 
-          <img src="images/cake.jpg" data-thumb="images/cake.jpg" alt="" title="Hessed,Pulchowk Lalitpur" /> 
-          <img src="images/vegan.jpg" data-thumb="images/vegan.jpg" alt="" title="Veggie Delight,jhamsikhel Lalitpur" />  
-          <img src="images/cookies.jpg" data-thumb="images/cookies.jpg" alt="" title="Herman Bakery,Pulchowk Lalitpur" /> 
+          <img src="images/slider_images/vegetable_fresh_food_nutrition_market_cuisine_cauliflower_broccoli-572682.jpg" data-thumb="images/slider_images/vegetable_fresh_food_nutrition_market_cuisine_cauliflower_broccoli-572682.jpg" alt="" title="Fresh Vegetables"/>
+          <img src="images/slider_images/meat-wallpapers-28272-3465142.jpg" data-thumb="images/tuna.jpg" alt="" title="Fresh Meats" />
+          <img src="images/slider_images/dessert-bokeh-docorations.jpg" data-thumb="images/slider_images/dessert-bokeh-docorations.jpg" alt="" title="Dessert Bokeh Decorations" /> 
+          <img src="images/slider_images/food_cookies_donuts-1366x768.jpg" data-thumb="images/slider_images/food_cookies_donuts-1366x768.jpg" alt="" title="Cookies and Donuts" /> 
+          <img src="images/slider_images/videoblocks-close-up-of-a-delicatessen-display-case-with-a-variety-of-foods-filled-with-cheese-at-naschtmarkt-in-vienna-austria_ss7ps1e_z_thumbnail-full01.png" data-thumb="images/slider_images/videoblocks-close-up-of-a-delicatessen-display-case-with-a-variety-of-foods-filled-with-cheese-at-naschtmarkt-in-vienna-austria_ss7ps1e_z_thumbnail-full01.png" alt="" title="Delicatessan" />  
+          <img src="images/slider_images/Coron-Restaurants.jpg" data-thumb="images/slider_images/Coron-Restaurants.jpg" alt="" title="Fish" /> 
 
     </div>
     

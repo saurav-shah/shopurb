@@ -24,10 +24,18 @@
     </div>
 
     <div class="row">
-    <h3>MOTTO</h3>
+    
     <p>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium quod commodi rem et deleniti non voluptatibus. 
-    Nihil veritatis id, corporis culpa cupiditate aspernatur sit, error officiis magni, eligendi impedit reprehenderit.
+    Launched in 2019, Shopurb is e-commerce site and premium online shopping marketplace with an active presence in Halifax, Cleckheaton, Dewsbury.
+Supported by a wide range of tailored marketing, data and service solutions, Shopurb has 30.000 sellers and 50 brands and serves 5 million consumers across the region.
+Shopurb has many products to offer, growing at a very fast pase. Shopurb offers a diverse assortment in food items.
+<br/><br/>
+Shopurb is focused on providing an excellent customer experiance, ease-of-purchase,comprehensive customer care and a hassle-free shopping and returns experience.
+<br/><br/>
+<strong>Empowering sellers on Shopurb:</strong>
+Shopurb puts utmost focus on empowering its sellers, they form the backbone of our market-place.We provide incredible levels of control and ownership to our sellers so they can manage their shops effectively and efficiently.
+<br/><br/>
+We are incredibly proud of the success stories that have emerged from our marketplace in the past and actively look forward to welcoming many more! 
     </p>
     </div>
     
