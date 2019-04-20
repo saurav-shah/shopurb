@@ -162,6 +162,7 @@ if(isset($_POST['insert_product'])){
     $allergy = $_POST['allergy'];
     $desc = $_POST['prod_desc'];
     $keywords = $_POST['keywords'];
+    $max_order = stock - 1;
     
     
     $image = $_FILES['image']['name'];    
@@ -181,7 +182,7 @@ if(isset($_POST['insert_product'])){
         move_uploaded_file($image_temp,"product_images/$image");
         
         
-        $sql = "insert into product  (prod_id, prod_title, fk_cat_id, stock, prod_price,allergy_info, prod_desc,keywords,prod_img,fk_trader_id) values  (prod_id.nextval,'$pname','$cat_id',$stock,$price,'$allergy','$desc','$keywords','$image',5)";
+        $sql = "insert into product  (prod_id, prod_title, fk_cat_id, stock, prod_price,allergy_info, prod_desc,keywords,prod_img, max_order ,fk_shop_id) values  (prod_id.nextval,'$pname','$cat_id',$stock,$price,'$allergy','$desc','$keywords','$image',$max_order, 5)";
         
         
         $insert = oci_parse($con, $sql);

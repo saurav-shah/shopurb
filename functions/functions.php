@@ -20,8 +20,7 @@ function get_products() {
                 while($row = oci_fetch_assoc($get_prod)){
 
                     $prod_id = $row['PROD_ID'];
-                    $prod_title = $row['PROD_TITLE'];
-                    $prod_cat = $row['FK_CAT_ID'];
+                    $prod_title = $row['PROD_TITLE'];                    
                     $prod_img = $row['PROD_IMG'];
                     $prod_price = $row['PROD_PRICE'];
                    
@@ -74,7 +73,6 @@ function get_cat_products() {
 
                     $prod_id = $row['PROD_ID'];
                     $prod_title = $row['PROD_TITLE'];
-                    $prod_cat = $row['FK_CAT_ID'];
                     $prod_img = $row['PROD_IMG'];
                     $prod_price = $row['PROD_PRICE'];
 
@@ -114,9 +112,9 @@ function get_shop_products() {
     
         if(isset($_GET['shop'])){
             
-                $trader_id = $_GET['shop'];            
+                $shop_id = $_GET['shop'];            
                 
-                 $sql = "select * from product where fk_trader_id = $trader_id ";
+                 $sql = "select * from product where fk_shop_id = $shop_id ";
 
                 $get_shop_prod = oci_parse($con, $sql);
 
@@ -126,7 +124,6 @@ function get_shop_products() {
 
                     $prod_id = $row['PROD_ID'];
                     $prod_title = $row['PROD_TITLE'];
-                    $prod_cat = $row['FK_CAT_ID'];
                     $prod_img = $row['PROD_IMG'];
                     $prod_price = $row['PROD_PRICE'];
 
@@ -142,9 +139,9 @@ function get_shop_products() {
 
                     <center>
                         <p><div class='default badge'>Price: $$prod_price</div></p>
-                        <div class='pretty  warning btn'><a href='shop.php?add_cart=$prod_id'>Add to Cart</a></div>
+                        <div class='small warning btn'><a href='shop.php?add_cart=$prod_id'>Add to Cart</a></div>
 
-                        <div class='pretty  success btn'><a href='details.php?pro_id=$prod_id'>Details</a></div>
+                        <div class='small  success btn'><a href='details.php?pro_id=$prod_id'>Details</a></div>
                     </center>
 
                 </div>
@@ -162,16 +159,16 @@ function get_shop() {
      
          // fetching shop name from database
          global $con;
-         $get_shop= oci_parse($con, 'select * from trader');
+         $get_shop= oci_parse($con, 'select * from shop');
 
          oci_execute($get_shop);
 
          while($row = oci_fetch_assoc($get_shop)){
 
-            $trader_id = $row['TRADER_ID'];
+            $shop_id = $row['SHOP_ID'];
             $shop_name = $row['SHOP_NAME'];
 
-            echo "<li class='medium oval btn default'><a href='shop.php?shop=$trader_id'>$shop_name</a></li>";
+            echo "<li class='medium oval btn default'><a href='shop.php?shop=$shop_id'>$shop_name</a></li>";
 
 
         }
