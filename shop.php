@@ -29,7 +29,7 @@ include ('functions/functions.php');
         <img src="images/banner.png" alt="banner">
     </div>
 <?php include('navbar.php');
-    include('searchetc.php');?> 
+    include('searchetc.php'); cart();?> 
 
     
 
@@ -67,9 +67,12 @@ include ('functions/functions.php');
             <!-- right side start-->
             <div class="nine columns">
                
-               <?php get_products(); ?> 
-               <?php get_cat_products(); ?>
-               <?php get_shop_products(); ?>  
+               <?php 
+                    get_products();  
+                    get_cat_products(); 
+                    get_shop_products();
+               ?> 
+               
                 
             </div>
             <!-- right side end-->

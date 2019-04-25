@@ -1,7 +1,10 @@
 <?php
 $errors=array();
+
+
+include 'includes/db.php';
+include 'functions/functions.php';
  include ('errors.php');
-include ('connection.php');
     if (isset($_POST['Login']))
     {
         //makes a  directory if doesn't exist to store images

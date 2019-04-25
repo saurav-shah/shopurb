@@ -1,5 +1,75 @@
+<?php
+
+include 'includes/db.php';
+include 'functions/functions.php';
+$error = null;
+
+
+if(isset($_POST['login'])){
+    
+    $u = $_POST['uname'];
+    $p = $_POST['pass'];
+    $p = md5($p);
+    
+    
+    $sql = "select * from users where username = '$u' and password = '$p'";    
+    $select = oci_parse($con, $sql);    
+    oci_execute($select);    
+    $num_rows = oci_fetch_all($select, $out);
+    
+    if($num_rows == 1){
+        
+        oci_execute($select);
+        
+        //process login
+        while($row = oci_fetch_assoc($select)){
+            $id = $row['USER_ID'];
+            $verified = $row['VERIFIED'];
+            $email = $row['EMAIL'];
+            $status = $row['STATUS'];
+            $created_at = $row['CREATED_AT'];
+			$date = strtotime($created_at);
+			$date = date('M d Y', $date);
+            $role = $row['ROLE'];
+        }
+        
+     
+        if($verified == 1){
+            
+            
+            switch($role) {
+                    
+                case "Customer":
+                    session_start();
+                    $_SESSION['cust_id'] = $id;
+                    header ('location: index.php');
+                    break;
+                    
+            }
+            
+        }
+        elseif($verified == 0 and $status == 'active') {
+            $error = 'This account is not verified. An email was sent to '. $email .' on '.$date;
+        }
+        else {
+            $error = 'Your account has been disabled by admin';
+        }
+        
+    }else {
+        
+        //Invalid Credential
+        $error = 'Username or password incorrect';
+    }
+    
+}
+
+
+
+
+?>
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,76 +81,65 @@
     <script src="gumby/js/libs/modernizr-2.6.2.min.js"></script>
     <script src="main.js"></script>
 </head>
+
 <body>
-<script src="gumby/js/libs/jquery-2.0.2.min.js"></script>
+    <script src="gumby/js/libs/jquery-2.0.2.min.js"></script>
     <script src="gumby/js/libs/gumby.min.js"></script>
-    <div class= "wrapper">
-    <div id="heading">
-        <img src="images/banner.png" alt="banner">
-    </div>
-    <?php include('navbar.php');
-    include('searchetc.php');?> 
-    <!--LOGIN FORM-->
-    <div id="wrapper" style="text-align: left;">
+    <div class="wrapper">
+        <div id="heading">
+            <img src="images/banner.png" alt="banner">
+        </div>
+        <?php include('navbar.php');
+    include('searchetc.php');?>
+        <!--LOGIN FORM-->
+        <div id="wrapper" style="text-align: left;">
             <div class="row" id="container">
                 <div class="twelve columns">
-                    <h2>Login</h2><br/>
-            <form method="POST" action="">
-                Email<br/>
-                <input type="Email" name="mail"  required value="<?php if(isset($_POST['mail']))
-			    {
-				    echo $_POST['mail']; 
-			    }?>"/><br/>
-                Password<br/>
-                <input type="password" name="Password" required/><br/><br/>
-                <div class="medium default btn" id="btn1">
-                    <input type="submit" name="Login" value="Submit" style="padding-bottom: 34px;padding-left: 0px;"/><br/><br/>
-                </div>
-            
-            <!--login Query-->
-                <?php
-                $errors= array();
-    include ('connection.php');
-    if (isset($_POST['Login'])){
-        $email=$_POST['mail'];
-        $pass=md5($_POST['Password']);
-        $query="SELECT * FROM users WHERE Email='$email' AND Password='$pass'";
-        $result=mysqli_query($connection, $query);
-        $count= mysqli_num_rows($result);
-        if($count>=1)
-        //checks role
-        {
-            while ($row = mysqli_fetch_assoc($result)) {
-            $crole=$row['Role'];
-           
-           
-            if($crole=="SA")
-            {
-                header('Location:admin/dashboard.php');
-                $_SESSION['email']=$email;
-            }
-            if($crole=="U")
-            {
-                header('Location: Index.php');
-                $_SESSION['email']=$email;
-            }
-        }  
-    }
-    else{
-        echo"User not Registered";
-    }
-    }
-?>
-            </form>
-            <a href="register.php">Create a new account</a><br/>
-        </div>
-        </div>
-</div>
-<hr class="line">
-        <!--Footer-->
-<footer>
-   <?php include('footer.php')?>
-</footer>
-</body>
-</html>
 
+                    <h2>Login</h2><br />
+
+
+                    <form method="POST" action="" enctype="multipart/form-data">
+
+
+                        <ul style="text-align:center;">
+
+                            <li class="field">
+                                <input class="narrow input" type="text" placeholder="Username" required name="uname" value="<?php if(isset($_POST['uname'])) echo $_POST['uname']; ?>">
+                            </li>
+                            <li class="field">
+
+                                <input type="password" name="pass" required placeholder="Password" class="narrow input" value="<?php if(isset($_POST['pass'])) echo $_POST['pass']; ?>">
+                            </li>
+
+                            <div class="medium primary btn" id="btn1">
+                                <input type="submit" name="login" value="Login" />
+                            </div>
+
+                        </ul>
+
+
+
+                        <!--login Query-->
+
+
+
+
+
+
+
+
+                    </form>
+                    <center style="color:red;"><?php echo $error; ?></center>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr class="line">
+    <!--Footer-->
+    <footer>
+        <?php include('footer.php')?>
+    </footer>
+</body>
+
+</html>

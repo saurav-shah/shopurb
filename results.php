@@ -83,7 +83,6 @@ include ('functions/functions.php');
 
                     $prod_id = $row['PROD_ID'];
                     $prod_title = $row['PROD_TITLE'];
-                    $prod_cat = $row['FK_CAT_ID'];
                     $prod_img = $row['PROD_IMG'];
                     $prod_price = $row['PROD_PRICE'];
 
@@ -99,9 +98,9 @@ include ('functions/functions.php');
 
                     <center>
                         <p><div class='default badge'>Price: $$prod_price</div></p>
-                        <div class='pretty small warning btn'><a href='shop.php?add_cart=$prod_id'>Add to Cart</a></div>
+                        <div class='small warning btn'><a href='shop.php?add_cart=$prod_id'>Add to Cart</a></div>
 
-                        <div class='pretty small success btn'><a href='details.php?pro_id=$prod_id'>Details</a></div>
+                        <div class='small success btn'><a href='details.php?pro_id=$prod_id'>Details</a></div>
                     </center>
 
                 </div>
