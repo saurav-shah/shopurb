@@ -15,6 +15,10 @@ else {
     
 if(isset($_POST['register'])) {
     
+    $image = $_FILES['pic']['name'];    
+    $image_temp = $_FILES['pic']['tmp_name'];    
+    $check_image = getimagesize($_FILES["pic"]["tmp_name"]);
+    
     $u = $_POST['username'];
     $f = $_POST['fname'];
     $e = $_POST['email'];
@@ -54,10 +58,14 @@ if(isset($_POST['register'])) {
     elseif($email_count != 0) {
         $error = 'An account already exists with the email address you provided';
     }
+    
+    elseif ($check_image == 0){
+        $error = 'Please Upload a Valid Image';
+    }
     elseif ($p1 != $p2) {
         $error = 'The two passwords do not match';
     }
-    elseif(!preg_match($format,$p1)) { 
+    elseif(!preg_match($format, $p1)) { 
             $error = "Password must contain a number, a special character, a capital letter and must be 8-20 characters long.";
  
     }
@@ -70,10 +78,9 @@ if(isset($_POST['register'])) {
         
         // inserting into database
         
-        $sql = "insert into users (user_id, vKey, username, firstname, lastname, password, email, dob, address, role) values (user_id.nextval, '$vKey', '$u', '$f', '$l', '$p', '$e', to_date('$dob','yyyy-mm-dd'), '$addr', '$role')";
-        
-        echo $sql;
-            
+        move_uploaded_file($image_temp,'profile_pics/'.$image);
+        $sql = "insert into users (user_id, vKey, username, firstname, lastname, password, email, dob, address, role, profile_picture) values (user_id.nextval, '$vKey', '$u', '$f', '$l', '$p', '$e', to_date('$dob','yyyy-mm-dd'), '$addr', '$role', '$image')";
+           
         
         $insert = oci_parse($con, $sql);
         
@@ -162,8 +169,7 @@ if(isset($_POST['register'])) {
     <link rel="stylesheet" href="gumby/css/gumby.css">
     <link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="css/login.css" />
-    <script src="../gumby/js/libs/modernizr-2.6.2.min.js"></script>
-    <script src="main.js"></script>
+   
 </head>
 
 <body>
@@ -207,6 +213,11 @@ if(isset($_POST['register'])) {
 
                         <li class="field">
                             <input type="email" class="wide input" placeholder="Email" name="email" required value="<?php if(isset($_POST['email'])) echo $_POST['email'];?>">
+                        </li>
+                        
+                        <label for="pic" style="text-align:left; margin-left:165px;">Profile Image</label>
+                        <li class="field">
+                            <input id="pic" type="file" class="input wide" name="pic" required value="<?php if(isset($_POST['pic'])) echo $_POST['pic'];?>">
                         </li>
 
                         <li class="field">

@@ -162,7 +162,7 @@ if(isset($_POST['insert_product'])){
     $allergy = $_POST['allergy'];
     $desc = $_POST['prod_desc'];
     $keywords = $_POST['keywords'];
-    $max_order = stock - 1;
+    $max_order = $stock - 1;
     
     
     $image = $_FILES['image']['name'];    

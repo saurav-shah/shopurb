@@ -8,16 +8,21 @@
         @session_start();
         if(isset($_SESSION['cust_id'])) {
             
-            $sql = 'select username from users where user_id = '.$_SESSION['cust_id'].'';
+            $sql = 'select username,profile_picture from users where user_id = '.$_SESSION['cust_id'].'';
             $prep = oci_parse($con, $sql);
             oci_execute($prep);
             
             while($row = oci_fetch_assoc($prep)){
                 $username = $row['USERNAME'];
+                $pic = $row['PROFILE_PICTURE'];
+                
             };
             
+            if($pic == null) {
+                $pic = 'default.jpg';
+            }
             
-            echo ' Welcome '.$username.' | <a href = "logout.php">Logout</a>';
+            echo '<img width="35" src = "profile_pics/'.$pic.'" alt="avatar" style="border-radius: 50%; margin-top:-5px; float:left; margin-right: 10px;"><span style = "color:white;"> <em>'.$username.'</em> | Profile | </span><a href = "logout.php">Logout</a>';
         }
         else {
             echo '<a href="login.php">Login</a> |
