@@ -34,7 +34,7 @@ if(isset($_POST['login'])){
         }
         
      
-        if($verified == 1){
+        if($verified == 1 and $status == 'active'){
             
             
             switch($role) {

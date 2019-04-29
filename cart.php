@@ -312,7 +312,7 @@ include ('functions/functions.php');
     <script>
         
         function pay() {
-            document.form.action = "paypal/pay.php";
+            document.form.action = "pay.php";
             document.form.submit();
         }
     </script>

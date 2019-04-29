@@ -35,7 +35,7 @@ if(isset($_POST['register'])) {
     oci_execute($prep);
     $num_rows = oci_fetch_all($prep, $out);
     
-    $sql = "select * from users where email = '$e'";
+    $sql = "select * from users where email = '$e' and role = 'Customer'";
     $prep = oci_parse($con, $sql);
     oci_execute($prep);
     $email_count = oci_fetch_all($prep, $out);
@@ -227,7 +227,15 @@ if(isset($_POST['register'])) {
                         <li class="field">
                             <input type="password" class="wide input" name="pass2" placeholder="Confirm Password" required value="<?php if(isset($_POST['pass2'])) echo $_POST['pass2'];?>">
                         </li>
+                        
+                         
+                         <br><br>
+                         <input type="checkbox" required> <span>I agree with the terms and conditions.</span>
+                         <br><br>
+                         
 
+               
+                       
                         <div class="medium primary btn">
                             <input type="submit" value="Register" name="register">
                         </div>

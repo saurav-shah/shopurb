@@ -90,7 +90,10 @@ CREATE TABLE users
   vkey varchar2(255),
   verified integer DEFAULT 0,
   created_at date DEFAULT sysdate,
+  phone varchar2(255), 
+  product_line varchar2(255),
   status varchar2(255) DEFAULT 'active'
+  
 );
 
 

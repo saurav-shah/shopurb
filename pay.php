@@ -80,7 +80,7 @@ require_once('includes/db.php');
 
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
+    <title>Pay</title>
 </head>
 
 <body>
@@ -94,6 +94,8 @@ require_once('includes/db.php');
 
 
         <?php
+        
+        $discount_amt=0;
                             $subtotal = 0;
                             $count = 1; 
                             $sql = 'select * from cart where user_id = '.$c_id.'';
@@ -121,6 +123,7 @@ require_once('includes/db.php');
                                     $line_total = $qty_price - (($discount/100) * $qty_price);
                                     $subtotal += $line_total;
                                     $tax = 0.13 * $subtotal;
+                                    $discount_amt += $discount/100 * $qty_price;
                                     
                                     
                                 
@@ -139,10 +142,12 @@ require_once('includes/db.php');
        
         <input type="hidden" name="item_name_<?= $count ?>" value="Sales Tax">
         <input type="hidden" name="amount_<?= $count ?>" value="<?= $tax ?>">
+        <input type="hidden" name="invoice" value="<?= $invoice_no ?>">
+        <input type="hidden" name="custom" value="d=<?= $discount_amt ?>&c=<?= $collection_slot ?>">
 
         <input type="hidden" name="rm" value="2">
-        <input type="hidden" name="return" value="http://localhost/projects/PM/paypal/paypal_success.php?i=<?= $invoice_no ?>" />
-        <input type="hidden" name="cancel_return" value="http://localhost/projects/PM/paypal/paypal_cancel.php" />
+        <input type="hidden" name="return" value="http://localhost/projects/PM/paypal_success.php" />
+        <input type="hidden" name="cancel_return" value="http://localhost/projects/PM/paypal_cancel.php" />
 
 
     </form>
