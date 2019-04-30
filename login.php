@@ -1,8 +1,12 @@
 <?php
-
+session_start();
 include 'includes/db.php';
 include 'functions/functions.php';
 $error = null;
+
+if(isset($_SESSION['cust_id']) or isset($_SESSION['trader_id'])) {
+    header('location: index.php');
+}
 
 
 if(isset($_POST['login'])){

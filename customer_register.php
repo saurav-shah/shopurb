@@ -79,6 +79,7 @@ if(isset($_POST['register'])) {
         // inserting into database
         
         move_uploaded_file($image_temp,'profile_pics/'.$image);
+        
         $sql = "insert into users (user_id, vKey, username, firstname, lastname, password, email, dob, address, role, profile_picture) values (user_id.nextval, '$vKey', '$u', '$f', '$l', '$p', '$e', to_date('$dob','yyyy-mm-dd'), '$addr', '$role', '$image')";
            
         
@@ -217,7 +218,7 @@ if(isset($_POST['register'])) {
                         
                         <label for="pic" style="text-align:left; margin-left:165px;">Profile Image</label>
                         <li class="field">
-                            <input id="pic" type="file" class="input wide" name="pic" required value="<?php if(isset($_POST['pic'])) echo $_POST['pic'];?>">
+                            <input id="pic" type="file" class="input wide" name="pic" value="<?php if(isset($_POST['pic'])) echo $_POST['pic'];?>">
                         </li>
 
                         <li class="field">

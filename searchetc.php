@@ -22,7 +22,7 @@
                 $pic = 'default.jpg';
             }
             
-            echo '<img width="35" src = "profile_pics/'.$pic.'" alt="avatar" style="border-radius: 50%; margin-top:-5px; float:left; margin-right: 10px;"><span style = "color:white;"> <em>'.$username.'</em> | Profile | </span><a href = "logout.php">Logout</a>';
+            echo '<img width="35" src = "profile_pics/'.$pic.'" alt="avatar" style="border-radius: 50%; margin-top:-5px; float:left; margin-right: 10px;"><span style = "color:white;"> <em>'.$username.'</em> | <a href="profile.php">Profile</a> | </span><a href = "logout.php">Logout</a>';
         }
         else {
             echo '<a href="login.php">Login</a> |

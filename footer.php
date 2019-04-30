@@ -7,6 +7,7 @@
             <div class="bold">LEGAL</div><br/>
                     <a href="terms.php">Terms and Conditions</a><br/>
             <a href="privacypolicy.php">Privacy Policy</a><br/>
+               <a href="faq.php">FAQ</a>
                 </div>
                 <div class=" three columns">
                 <div class="bold">LINKS</div><br/>

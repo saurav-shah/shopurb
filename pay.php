@@ -95,7 +95,7 @@ require_once('includes/db.php');
 
         <?php
         
-        $discount_amt=0;
+                            $discount_amt=0;
                             $subtotal = 0;
                             $count = 1; 
                             $sql = 'select * from cart where user_id = '.$c_id.'';
