@@ -41,6 +41,11 @@ if(isset($_POST['register'])) {
     $prep = oci_parse($con, $sql);
     oci_execute($prep);
     $email_count = oci_fetch_all($prep, $out);
+    
+    $sql = "select * from users where product_line = '$p_line'";
+    $prep = oci_parse($con, $sql);
+    oci_execute($prep);
+    $p_line_count = oci_fetch_all($prep, $out); 
         
     if($num_rows != 0) {
         $error = '<p>Username is taken. Choose another one.</p>';
@@ -60,7 +65,9 @@ if(isset($_POST['register'])) {
     elseif($email_count != 0) {
         $error = 'An account already exists with the email address you provided';
     }
-    
+    elseif($p_line_count != 0) {
+        $error = 'Product Line is taken. Please choose another one!';
+    }
     elseif ($check_image == 0){
         $error = 'Please Upload a Valid Image';
     }
@@ -86,8 +93,12 @@ if(isset($_POST['register'])) {
         
         $insert = oci_parse($con, $sql);
         
-        oci_execute($insert);
+        if($insert) {
+            echo '<script>alert(\'Trader Inserted\')</script>';
+        }
         
+        oci_execute($insert);
+        /*
         if($insert){
             //Sending Email
             $mail = new PHPMailer;
@@ -147,15 +158,10 @@ if(isset($_POST['register'])) {
             exit;
             
             
-        }
+        }*/
         
+        }
     }
-    
-    
-}
-
-
-    
 }
 
 
@@ -171,7 +177,7 @@ if(isset($_POST['register'])) {
     <link rel="stylesheet" href="gumby/css/gumby.css">
     <link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="css/login.css" />
-   
+
 </head>
 
 <body>
@@ -212,50 +218,40 @@ if(isset($_POST['register'])) {
                         <li class="field">
                             <input type="text" class="wide input" placeholder="Address" name="address" required value="<?php if(isset($_POST['address'])) echo $_POST['address'];?>">
                         </li>
-                        
+
                         <label for="pic" style="text-align:left; margin-left:165px;">Profile Image</label>
                         <li class="field">
                             <input id="pic" type="file" class="input wide" name="pic" required value="<?php if(isset($_POST['pic'])) echo $_POST['pic'];?>">
                         </li>
-                        
+
                         <li class="field">
                             <input type="email" class="wide input" placeholder="Email" name="email" required value="<?php if(isset($_POST['email'])) echo $_POST['email'];?>">
                         </li>
-                        
+
                         <li class="field">
                             <input type="tel" class="wide input" placeholder="Phone" name="phone" required value="<?php if(isset($_POST['phone'])) echo $_POST['phone'];?>">
                         </li>
-                        
+
                         <li class="field">
                             <input type="text" class="wide input" placeholder="Product Line" name="p_line" required value="<?php if(isset($_POST['p_line'])) echo $_POST['p_line'];?>">
                         </li>
-                        
+
                         <li class="field">
-                            <input type="password" class="wide input" name="pass1" placeholder="Password" required value="<?php if(isset($_POST['pass1'])) echo $_POST['pass1'];?>">
+                            <input type="password" class="wide input" name="pass1" placeholder="Password" required>
                         </li>
 
                         <li class="field">
-                            <input type="password" class="wide input" name="pass2" placeholder="Confirm Password" required value="<?php if(isset($_POST['pass2'])) echo $_POST['pass2'];?>">
+                            <input type="password" class="wide input" name="pass2" placeholder="Confirm Password" required >
                         </li>
-                        
-                         
-                         <br><br>
-                         <input type="checkbox" required> <span>I agree with the terms and conditions.</span>
-                         <br><br>
-                         
 
-               
-                       
+
+                        <br><br>
+                        <input type="checkbox" required> <span>I agree with the terms and conditions.</span>
+                        <br><br>
                         <div class="medium primary btn">
                             <input type="submit" value="Register" name="register">
                         </div>
                     </ul>
-
-
-
-
-
-
                 </form>
                 <center style="color:red;"><?php echo $error; ?></center>
             </div>

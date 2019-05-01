@@ -14,6 +14,18 @@ require_once('includes/db.php');
        $payment_status = 'Unpaid';
        $invoice_no = mt_rand(1000,9999); 
         
+        $check_slot = "select * from orders where collection_slot = '$collection_slot'";
+        $prep = oci_parse($con, $check_slot);
+        oci_execute($prep);
+        $slot_order_count = oci_fetch_all($prep, $out);
+        
+        if($slot_order_count == 20) {
+            
+            echo '<script>The collection slot you have chosen is full. Choose another Time.</script>';
+            header('location: cart.php?slot=full');
+            die();
+        } 
+        
         //Inserting into orders table with payment_status = Unpaid
          $sql = "insert into orders (order_id, customer_id, amount, collection_slot, total_products, order_date, payment_status, invoice_no) values (order_id.nextval, $c_id, $amt, '$collection_slot', $total_prod, sysdate, '$payment_status', $invoice_no)";
         
@@ -42,12 +54,9 @@ require_once('includes/db.php');
                     $shop_id = $data['FK_SHOP_ID'];
 
 
-
-
-
                 }
             
-             $insert_invoice = "insert into invoice (invoice_id, shop_id, invoice_no, prod_id, quantity, collection_slot, payment_status) values (invoice_id.nextval, $shop_id, $invoice_no, $p_id, $qty, '$collection_slot', '$payment_status')";
+             $insert_invoice = "insert into invoice (invoice_id, shop_id, invoice_no, prod_id, quantity) values (invoice_id.nextval, $shop_id, $invoice_no, $p_id, $qty)";
             
                 
             oci_execute(oci_parse($con, $insert_invoice));

@@ -26,8 +26,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     $sql = "update orders set payment_status = 'Paid' where invoice_no = $invoice_no";        
     oci_execute(oci_parse($con, $sql));
         
-    $sql = "update invoice set payment_status = 'Paid' where invoice_no = $invoice_no";        
-    oci_execute(oci_parse($con, $sql));
+//    $sql = "update invoice set payment_status = 'Paid' where invoice_no = $invoice_no";        
+//    oci_execute(oci_parse($con, $sql));
     
     
     

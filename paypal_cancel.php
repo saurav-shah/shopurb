@@ -7,8 +7,6 @@ require 'functions/functions.php';
 
 ?>
 
-
-
 <!DOCTYPE html>
 <html>
 <head>

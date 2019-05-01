@@ -2,6 +2,11 @@
 
 include ('includes/db.php');
 include ('functions/functions.php');
+$error = null;
+if(isset($_GET['slot']) and $_GET['slot'] == 'full') {
+    
+    $error = 'The collection slot you have chosen hash reached its limit. Choose another one.';
+}
 
 ?>
 <!DOCTYPE html>
@@ -43,8 +48,8 @@ include ('functions/functions.php');
             <div class="twelve columns">
 
                 <?php if(cart_items() != 0 ) { ?>
-               
-                 <form action="cart.php" enctype="multipart/form-data" method="post" name="form">
+
+                <form action="cart.php" enctype="multipart/form-data" method="post" name="form">
                     <table>
                         <thead>
                             <tr>
@@ -57,9 +62,9 @@ include ('functions/functions.php');
 
                             </tr>
                         </thead>
-                         
+
                         <tbody>
-                          
+
                             <?php
                             $subtotal = 0;
                             $sql = 'select * from cart where user_id = '.$_SESSION['cust_id'].'';
@@ -151,8 +156,8 @@ include ('functions/functions.php');
                                 <td><?= '$'.$subtotal ?></td>
                                 <td></td>
                             </tr>
-                            
-                             <tr>
+
+                            <tr>
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -161,7 +166,7 @@ include ('functions/functions.php');
                                 <td>13%</td>
                                 <td></td>
                             </tr>
-                             <tr>
+                            <tr>
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -170,7 +175,7 @@ include ('functions/functions.php');
                                 <td><?= '$'.$grand_total ?></td>
                                 <td><input type="hidden" name="amount" value="<?= $grand_total ?>"></td>
                             </tr>
-                         
+
                             <tr>
                                 <td></td>
                                 <td></td>
@@ -185,21 +190,20 @@ include ('functions/functions.php');
                                     $s3 = $slots[2];
                                 ?>
                                 <td><select name="slot" required>
-                                        
 
-                                        <option value="" disabled  >-- Slot --</option>
-                                        
+
+                                        <option value="" disabled>-- Slot --</option>
                                         <option value="<?= $s1 ?>"><?= $s1 ?></option>
                                         <option value="<?= $s2 ?>"><?= $s2 ?></option>
                                         <option value="<?= $s3 ?>"><?= $s3 ?></option>
 
                                     </select>
                                 </td>
-                                
+
                                 <td>
                                     <select name="time" required>
 
-                                        <option value="" disabled >-- Time --</option>
+                                        <option value="" disabled>-- Time --</option>
                                         <option value="10-13">10-13</option>
                                         <option value="13-16">13-16</option>
                                         <option value="16-19">16-19</option>
@@ -216,45 +220,25 @@ include ('functions/functions.php');
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                                
+
                                 <td>
                                     <div class="primary btn medium"><input type="submit" name="update" value="Update"></div>
                                 </td>
 
                                 <!-- checkout start -->
-                                
+                                <td>
+                                    <input onclick="pay()" type="image" border="0" src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/checkout-logo-medium.png" alt="Check out with PayPal">
 
-
-                               
-                                
-                              <td>
-                              
-
-                              <input onclick="pay()" type="image" border="0" src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/checkout-logo-medium.png" alt="Check out with PayPal">
-                              
-                              </td>
-                              
-
-
-
-
+                                </td>
                                 <!-- checkout end -->
 
                             </tr>
-
-                                  
                         </tbody>
-
-
                     </table>
-</form>
+                    <center style="color: red;"><?=$error?></center>
+                </form>
                 
                 
-               
-                
-                                    
-                                  
-
                 <?php } else {echo '<h2>cart is empty<h2>';} ?>
 
                 <?php
@@ -308,15 +292,15 @@ include ('functions/functions.php');
 
     <script src=" gumby/js/libs/jquery-2.0.2.min.js"></script>
     <script gumby-touch="gumby/js/libs" src="gumby/js/libs/gumby.min.js"></script>
-    
+
     <script>
-        
         function pay() {
             document.form.action = "pay.php";
             document.form.submit();
         }
+
     </script>
-    
+
 </body>
 
 </html>

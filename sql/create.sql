@@ -21,9 +21,7 @@ CREATE TABLE invoice
   invoice_no integer,
   shop_id integer,
   prod_id integer,
-  quantity integer,
-  collection_slot varchar2(255),
-  payment_status varchar2(255)
+  quantity integer
 );
 
 ALTER TABLE invoice ADD CONSTRAINT pk_invoice
