@@ -1,4 +1,8 @@
 <?php
+@session_start();
+if(isset($_SESSION['trader_id'])) {
+    header('location: trader_area/index.php');
+}
 
 // Getting all the products
 function get_products() {  
@@ -12,7 +16,7 @@ function get_products() {
             
             if(!isset($_GET['shop'])){ // If the get shop variable is not set
                 
-                 $sql = "select * from (select * from product order by dbms_random.value) where rownum <= 9";
+                 $sql = "select * from (select * from product order by dbms_random.value) where rownum <= 9 and prod_status = 'active'";
 
                 $get_prod = oci_parse($con, $sql);
 
@@ -65,7 +69,7 @@ function get_cat_products() {
             
                 $cat_id = $_GET['cat'];            
                 
-                 $sql = "select * from product where fk_cat_id = $cat_id ";
+                 $sql = "select * from product where fk_cat_id = $cat_id and prod_status = 'active'";
 
                 $get_cat_prod = oci_parse($con, $sql);
 
@@ -117,7 +121,7 @@ function get_shop_products() {
             
                 $shop_id = $_GET['shop'];            
                 
-                 $sql = "select * from product where fk_shop_id = $shop_id ";
+                 $sql = "select * from product where fk_shop_id = $shop_id and prod_status = 'active'";
 
                 $get_shop_prod = oci_parse($con, $sql);
 
@@ -273,7 +277,7 @@ function cart() {
                
             }
         else {
-                 echo '<script>alert("You must be logged in to do that")</script>';
+                  echo '<center class = "warning alert">You must be logged in to add to cart!</center>';
                  
             }
             

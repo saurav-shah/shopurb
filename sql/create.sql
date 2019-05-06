@@ -9,7 +9,7 @@ CREATE TABLE cart
 CREATE TABLE category
 (
   cat_id integer NOT NULL,
-  cat_title varchar2(255)
+  cat_title varchar2(255) unique
 );
 
 ALTER TABLE category ADD CONSTRAINT pk_category
@@ -42,7 +42,7 @@ CREATE TABLE orders
 ALTER TABLE orders ADD CONSTRAINT pk_orders
   PRIMARY KEY (order_id);
 
-CREATE TABLE products
+CREATE TABLE product
 (
   prod_id integer NOT NULL,
   prod_title varchar2(255),
@@ -66,7 +66,7 @@ ALTER TABLE products ADD CONSTRAINT pk_products
 CREATE TABLE shop
 (
   shop_id integer NOT NULL,
-  shop_name varchar2(255),
+  shop_name varchar2(255) unique,
   fk_trader_id integer
 );
 
@@ -76,7 +76,7 @@ ALTER TABLE shop ADD CONSTRAINT pk_shop
 CREATE TABLE users
 (
   user_id integer NOT NULL,
-  username varchar2(255),
+  username varchar2(255) UNIQUE,
   password varchar2(255),
   email varchar2(255),
   dob date,
@@ -89,10 +89,22 @@ CREATE TABLE users
   verified integer DEFAULT 0,
   created_at date DEFAULT sysdate,
   phone varchar2(255), 
-  product_line varchar2(255),
+  product_line varchar2(255) UNIQUE,
   status varchar2(255) DEFAULT 'active'
   
 );
+
+ALTER TABLE users ADD CONSTRAINT pk_users
+  PRIMARY KEY (user_id);
+
+ALTER TABLE product ADD CONSTRAINT fk_product_category
+  FOREIGN KEY (fk_cat_id) REFERENCES category (cat_id) ON DELETE CASCADE;
+
+ALTER TABLE product ADD CONSTRAINT fk_product_shop
+  FOREIGN KEY (fk_shop_id) REFERENCES shop (shop_id) ON DELETE CASCADE;
+
+ALTER TABLE shop ADD CONSTRAINT fk_shop_users
+  FOREIGN KEY (fk_trader_id) REFERENCES users (user_id) ON DELETE CASCADE;
 
 
 CREATE SEQUENCE user_id
@@ -119,15 +131,9 @@ MINVALUE 1
 INCREMENT BY 1
 CACHE 20;
 
-ALTER TABLE users ADD CONSTRAINT pk_users
-  PRIMARY KEY (user_id);
-
-ALTER TABLE products ADD CONSTRAINT fk_products_category
-  FOREIGN KEY (fk_cat_id) REFERENCES category (cat_id) ON DELETE CASCADE;
-
-ALTER TABLE products ADD CONSTRAINT fk_products_shop
-  FOREIGN KEY (fk_shop_id) REFERENCES shop (shop_id) ON DELETE CASCADE;
-
-ALTER TABLE shop ADD CONSTRAINT fk_shop_users
-  FOREIGN KEY (fk_trader_id) REFERENCES users (user_id) ON DELETE CASCADE;
+CREATE SEQUENCE shop_id
+START WITH 1
+MINVALUE 1
+INCREMENT BY 1
+CACHE 20;
 

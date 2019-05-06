@@ -3,9 +3,9 @@
 include ('includes/db.php');
 include ('functions/functions.php');
 $error = null;
-if(isset($_GET['slot']) and $_GET['slot'] == 'full') {
-    
-    $error = 'The collection slot you have chosen hash reached its limit. Choose another one.';
+if(isset($_GET['s']) and $_GET['s'] == 'f') {
+
+    $error = 'The collection slot you have chosen has reached its limit. Choose another one.';
 }
 
 ?>
@@ -72,18 +72,18 @@ if(isset($_GET['slot']) and $_GET['slot'] == 'full') {
                             oci_execute($prep);
                             $count = oci_fetch_all($prep, $out);
                             oci_execute($prep);
-                            
+
                             while($row = oci_fetch_assoc($prep)){
-                                
+
                                 $qty = $row['QUANTITY'];
                                 $p_id = $row['PROD_ID'];
                                 $qry = 'select * from product where prod_id = '.$p_id.'';
                                 $get = oci_parse($con, $qry);
                                 oci_execute($get);
-                                
+
                                 while($data = oci_fetch_assoc($get)){
-                                    
-                                    
+
+
                                     $max = $data['STOCK'] - 1;
                                     $p_image = $data['PROD_IMG'];
                                     $p_name = $data['PROD_TITLE'];
@@ -94,10 +94,10 @@ if(isset($_GET['slot']) and $_GET['slot'] == 'full') {
                                     $line_total = $qty_price - (($discount/100) * $qty_price);
                                     $subtotal += $line_total;
                                     $grand_total = 0.13 * $subtotal + $subtotal;
-                                
-                                    
-                                    
-                                
+
+
+
+
                            ?>
 
                             <tr>
@@ -113,19 +113,19 @@ if(isset($_GET['slot']) and $_GET['slot'] == 'full') {
                                 <td>
                                     <input name="qty<?= $p_id ?>" type="number" min="1" max="<?= $max ?>" value="<?= $qty ?>">
                                     <?php
-                                   
+
                                         if(isset($_POST['update'])) {
                                             $qty = $_POST['qty'.$p_id];
-                                            
+
                                             $update = 'update cart set quantity = '.$qty.' where user_id = '.$_SESSION['cust_id'].' and prod_id = '.$p_id.'';
                                             $run_update = oci_parse($con, $update);
                                             oci_execute($run_update);
-                                            
+
                                             if($run_update) {
                                                 echo '<script>window.open(\'cart.php\',\'_self\')</script>';
                                             }
                                         }
-                                   
+
                                    ?>
                                 </td>
 
@@ -145,7 +145,7 @@ if(isset($_GET['slot']) and $_GET['slot'] == 'full') {
                             </tr>
 
 
-                            <?php }}  ?>
+                            <?php }}  ?> 
 
                             <tr>
                                 <td></td>
@@ -183,8 +183,8 @@ if(isset($_GET['slot']) and $_GET['slot'] == 'full') {
 
 
                                 <td><strong>Collection: </strong></td>
-                                <?php $slots = get_slots(); 
-                                
+                                <?php $slots = get_slots();
+
                                     $s1 = $slots[0];
                                     $s2 = $slots[1];
                                     $s3 = $slots[2];
@@ -237,8 +237,8 @@ if(isset($_GET['slot']) and $_GET['slot'] == 'full') {
                     </table>
                     <center style="color: red;"><?=$error?></center>
                 </form>
-                
-                
+
+
                 <?php } else {echo '<h2>cart is empty<h2>';} ?>
 
                 <?php
@@ -253,6 +253,7 @@ if(isset($_GET['slot']) and $_GET['slot'] == 'full') {
 
                                 if($prep) {
                                     echo "<meta http-equiv='refresh' content='0'>";
+                                
                                 }
                             }
                         }
@@ -260,23 +261,13 @@ if(isset($_GET['slot']) and $_GET['slot'] == 'full') {
                         if(isset($_POST['continue'])) {
                             echo '<script>window.open(\'shop.php\',\'_self\')</script>';
                         }
-                        
-                        
+
+
                     }
                     echo @$update = update_cart();
-                
-               
-                
-
                 ?>
 
             </div>
-
-
-
-
-
-
 
         </div>
 

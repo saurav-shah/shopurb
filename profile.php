@@ -22,6 +22,9 @@ $c_id = $_SESSION['cust_id'];
           $row = oci_fetch_assoc($prep);
           
           $image = $row['PROFILE_PICTURE'];
+          if($image == null) {
+                $image = 'default.jpg';
+          }
           $fname = $row['FIRSTNAME'];
           $lname = $row['LASTNAME'];
           $email = $row['EMAIL'];
@@ -32,6 +35,7 @@ $c_id = $_SESSION['cust_id'];
           $old_pic = $row['PROFILE_PICTURE'];
           $pass = $row['PASSWORD'];
           $e = $row['EMAIL'];
+          $role = $row['ROLE'];
           
 
 
@@ -92,7 +96,10 @@ if(isset($_POST['update'])) {
             }
             
             if($error == null) { 
-                unlink('profile_pics/'.$old_pic);
+                if($old_pic != null and $old_pic != 'default.jpg'){
+                    unlink('profile_pics/'.$old_pic);
+                }
+                
                 move_uploaded_file($image_temp,'profile_pics/'.$image);
                 
                 //update image
@@ -128,9 +135,6 @@ if(isset($_POST['update'])) {
     
     if($updated) {
         
-        
-            
-            
             //Sending Email
             $mail = new PHPMailer;
             //$mail->SMTPDebug = 3;                               // Enable verbose debug output
@@ -153,41 +157,38 @@ if(isset($_POST['update'])) {
             
             <p>Your profile details has been updated!</p><br>
             
+            <p>Account Type: $role</p>
             
+            <p>Status: Verified</p>
             
           
             
             ";            
             
         
-            if(!$mail->send()) {
+            if() {
                 
                 echo 'Message could not be sent.';
                 
                 echo 'Mailer Error: ' . $mail->ErrorInfo;
                 
             } else {
-                echo "<script>alert('Profile updated!')</script>";
-                echo "<meta http-equiv='refresh' content='0'>";
+                
+                echo "<meta http-equiv='refresh' content='1'>";
+                echo "<li class=\"success alert\">Profile Updated!</li>";
                 
             }
         
     } else {
         if($error == null) {
-            echo '<script>alert(\'Nothing has been changed to update!\')</script>';
+            echo "<meta http-equiv='refresh' content='1'>";
+                echo "<li class=\"warning alert\">Nothing to Update!</li>";
         }
         
     }
     
 }
-    
-
-    
-
-
-
-
-
+  
 
 ?>
 <!DOCTYPE html>
@@ -201,7 +202,7 @@ if(isset($_POST['update'])) {
     <link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="css/login.css" />
     <script src="../gumby/js/libs/modernizr-2.6.2.min.js"></script>
-    <script src="main.js"></script>
+    <link rel="stylesheet" href="css/main.css">
 </head>
 
 <body>
@@ -217,25 +218,18 @@ if(isset($_POST['update'])) {
         <div class="row" id="container">
             <div class="twelve columns">
                 <h2>Customer Profile</h2>
-                <?php
-          
-          
-       
-          
-    
-    ?>
-
+         
 
                 <img src="profile_pics/<?=$image?>" alt="pic" width="100" height="100" style="border-radius:50%">
 
 
                 <br><br>
-
+                
                 <form action="" method="post" enctype="multipart/form-data">
 
-                    <table>
+                    <table class="table">
 
-
+                       
 
                         <tr>
                             <td><label for="uname">Username: </label></td>
@@ -347,6 +341,7 @@ if(isset($_POST['update'])) {
                             </td>
                             
                         </tr>
+                       
                     </table>
 
 
@@ -359,6 +354,7 @@ if(isset($_POST['update'])) {
 
 
                 </form>
+                
                 <center style="color:red;"><?php echo $error; ?></center><br><br>
             </div>
         </div>

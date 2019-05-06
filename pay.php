@@ -19,10 +19,10 @@ require_once('includes/db.php');
         oci_execute($prep);
         $slot_order_count = oci_fetch_all($prep, $out);
         
-        if($slot_order_count == 20) {
+        if($slot_order_count >= 20) {
             
             echo '<script>The collection slot you have chosen is full. Choose another Time.</script>';
-            header('location: cart.php?slot=full');
+            header('location: cart.php?s=f');
             die();
         } 
         

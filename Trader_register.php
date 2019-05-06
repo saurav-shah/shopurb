@@ -14,10 +14,15 @@ else {
     
     
 if(isset($_POST['register'])) {
+    $check_image = 1;
+    $uploaded = false;
+    if(is_uploaded_file($_FILES['pic']['tmp_name'])){
+        $image = $_FILES['pic']['name'];    
+        $image_temp = $_FILES['pic']['tmp_name'];    
+        $check_image = getimagesize($_FILES["pic"]["tmp_name"]);
+        $uploaded = true;
+    }
     
-    $image = $_FILES['pic']['name'];    
-    $image_temp = $_FILES['pic']['tmp_name'];    
-    $check_image = getimagesize($_FILES["pic"]["tmp_name"]);
     
     $phone =$_POST['phone'];
     $p_line = $_POST['p_line'];
@@ -87,18 +92,20 @@ if(isset($_POST['register'])) {
         
         // inserting into database
         
-        move_uploaded_file($image_temp,'profile_pics/'.$image);
+         if($uploaded){
+            move_uploaded_file($image_temp,'profile_pics/'.$image);
+        }
+        else{
+            $image = null;
+        }
+        
         $sql = "insert into users (user_id, vKey, username, firstname, lastname, password, email, dob, address, role, profile_picture, phone, product_line) values (user_id.nextval, '$vKey', '$u', '$f', '$l', '$p', '$e', to_date('$dob','yyyy-mm-dd'), '$addr', '$role', '$image','$phone','$p_line')";
            
         
         $insert = oci_parse($con, $sql);
         
-        if($insert) {
-            echo '<script>alert(\'Trader Inserted\')</script>';
-        }
-        
         oci_execute($insert);
-        /*
+        
         if($insert){
             //Sending Email
             $mail = new PHPMailer;
@@ -158,7 +165,7 @@ if(isset($_POST['register'])) {
             exit;
             
             
-        }*/
+        }
         
         }
     }
@@ -221,7 +228,7 @@ if(isset($_POST['register'])) {
 
                         <label for="pic" style="text-align:left; margin-left:165px;">Profile Image</label>
                         <li class="field">
-                            <input id="pic" type="file" class="input wide" name="pic" required value="<?php if(isset($_POST['pic'])) echo $_POST['pic'];?>">
+                            <input id="pic" type="file" class="input wide" name="pic" value="<?php if(isset($_POST['pic'])) echo $_POST['pic'];?>">
                         </li>
 
                         <li class="field">

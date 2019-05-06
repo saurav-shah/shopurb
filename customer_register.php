@@ -14,11 +14,16 @@ else {
     
     
 if(isset($_POST['register'])) {
-    
-    $image = $_FILES['pic']['name'];    
-    $image_temp = $_FILES['pic']['tmp_name'];    
-    $check_image = getimagesize($_FILES["pic"]["tmp_name"]);
-    
+     $check_image = 1;
+    $uploaded = false;
+    if(is_uploaded_file($_FILES['pic']['tmp_name'])){
+        $image = $_FILES['pic']['name'];    
+        $image_temp = $_FILES['pic']['tmp_name'];    
+        $check_image = getimagesize($_FILES["pic"]["tmp_name"]);
+        $uploaded = true;
+    }
+   
+   
     $u = $_POST['username'];
     $f = $_POST['fname'];
     $e = $_POST['email'];
@@ -77,8 +82,13 @@ if(isset($_POST['register'])) {
         $p = md5($p1); // Encrypting Password
         
         // inserting into database
+        if($uploaded){
+            move_uploaded_file($image_temp,'profile_pics/'.$image);
+        }
+        else{
+            $image = null;
+        }
         
-        move_uploaded_file($image_temp,'profile_pics/'.$image);
         
         $sql = "insert into users (user_id, vKey, username, firstname, lastname, password, email, dob, address, role, profile_picture) values (user_id.nextval, '$vKey', '$u', '$f', '$l', '$p', '$e', to_date('$dob','yyyy-mm-dd'), '$addr', '$role', '$image')";
            
@@ -218,7 +228,7 @@ if(isset($_POST['register'])) {
                         
                         <label for="pic" style="text-align:left; margin-left:165px;">Profile Image</label>
                         <li class="field">
-                            <input id="pic" type="file" class="input wide" name="pic" value="<?php if(isset($_POST['pic'])) echo $_POST['pic'];?>">
+                            <input id="pic" type="file" class="input wide"  name="pic" value="<?php if(isset($_POST['pic'])) echo $_POST['pic'];?>">
                         </li>
 
                         <li class="field">

@@ -4,7 +4,7 @@ include 'includes/db.php';
 include 'functions/functions.php';
 $error = null;
 
-if(isset($_SESSION['cust_id']) or isset($_SESSION['trader_id'])) {
+if(isset($_SESSION['cust_id'])) {
     header('location: index.php');
 }
 
@@ -14,6 +14,7 @@ if(isset($_POST['login'])){
     $u = $_POST['uname'];
     $p = $_POST['pass'];
     $p = md5($p);
+   
     
     
     $sql = "select * from users where username = '$u' and password = '$p'";    
@@ -35,6 +36,7 @@ if(isset($_POST['login'])){
 			$date = strtotime($created_at);
 			$date = date('M d Y', $date);
             $role = $row['ROLE'];
+            $p_line = $row['PRODUCT_LINE'];
         }
         
      
@@ -43,10 +45,14 @@ if(isset($_POST['login'])){
             
             switch($role) {
                     
-                case "Customer":
-                    session_start();
+                case "Customer":                    
                     $_SESSION['cust_id'] = $id;
                     header ('location: index.php');
+                    break;
+                    
+                case "Trader":                      
+                    $_SESSION['trader_id'] = $id;
+                    header ('location: trader_area/index.php');
                     break;
                     
             }
