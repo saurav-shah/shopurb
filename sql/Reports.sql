@@ -1,21 +1,21 @@
 -- MONTHLY
-select to_char(order_date,'MONTH YYYY') as Month, p.prod_title as item, sum(i.quantity) as "QUANTITY SOLD", sum(i.quantity * p.prod_price) as "REVENUE"
+select to_char(order_date,'MONTH YYYY') as Month, p.prod_title as item, sum(i.quantity) as sales_quantity, '$'||sum(i.quantity * p.prod_price) as "REVENUE"
 from orders o, invoice i, shop s, product p
 where payment_status ='Paid'
 and i.prod_id = p.prod_id
 and s.shop_id = i.shop_id
 and i.invoice_no = o.invoice_no
-and s.fk_trader_id = '<trader_id_variable>'
-group by to_char(order_date,' MONTH YYYY'), p.prod_title
+and s.fk_trader_id = 51
+group by to_char(order_date,'MONTH YYYY'), p.prod_title
 
 -- YEARLY
-select to_char(order_date,'YYYY') as Month, p.prod_title as item, sum(i.quantity) as "QUANTITY SOLD", sum(i.quantity * p.prod_price) as "REVENUE"
+select to_char(order_date,'YYYY') as Month, p.prod_title as item, sum(i.quantity) as sales_quantity, '$'||sum(i.quantity * p.prod_price) as "REVENUE"
 from orders o, invoice i, shop s, product p
 where payment_status ='Paid'
 and i.prod_id = p.prod_id
 and s.shop_id = i.shop_id
 and i.invoice_no = o.invoice_no
-and s.fk_trader_id = '<trader_id_variable>'
+and s.fk_trader_id = 52
 group by to_char(order_date,'YYYY'), p.prod_title
 
 -- TODAY'S ORDER
