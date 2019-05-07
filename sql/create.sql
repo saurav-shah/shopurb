@@ -21,7 +21,8 @@ CREATE TABLE invoice
   invoice_no integer,
   shop_id integer,
   prod_id integer,
-  quantity integer
+  quantity integer,
+  delivery varchar2(255) default 'Pending'
 );
 
 ALTER TABLE invoice ADD CONSTRAINT pk_invoice
