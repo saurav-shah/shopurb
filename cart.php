@@ -84,7 +84,8 @@ if(isset($_GET['s']) and $_GET['s'] == 'f') {
                                 while($data = oci_fetch_assoc($get)){
 
 
-                                    $max = $data['STOCK'] - 1;
+                                    $max = $data['MAX_ORDER'];
+                                    $min = $data['MIN_ORDER'];
                                     $p_image = $data['PROD_IMG'];
                                     $p_name = $data['PROD_TITLE'];
                                     $p_desc = $data['PROD_DESC'];
@@ -111,7 +112,7 @@ if(isset($_GET['s']) and $_GET['s'] == 'f') {
                                 </td>
 
                                 <td>
-                                    <input name="qty<?= $p_id ?>" type="number" min="1" max="<?= $max ?>" value="<?= $qty ?>">
+                                    <input name="qty<?= $p_id ?>" type="number" min="<?= $min ?>" max="<?= $max ?>" value="<?= $min ?>">
                                     <?php
 
                                         if(isset($_POST['update'])) {

@@ -166,7 +166,7 @@ if(isset($_POST['update'])) {
             ";            
             
         
-            if() {
+            if(!$mail->send()) {
                 
                 echo 'Message could not be sent.';
                 

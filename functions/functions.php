@@ -247,6 +247,7 @@ function cart() {
             oci_execute($get);
             while($data = oci_fetch_assoc($get)) {
                 $stock = $data['STOCK'];
+                $min_order = $data['MIN_ORDER'];
                 
                 if($stock > 1) {
                     $sql = 'select * from cart where user_id = '.$_SESSION['cust_id'].' and prod_id = '.$p_id.'';
@@ -255,7 +256,7 @@ function cart() {
                     $num_rows = oci_fetch_all($prep, $out);
             
                     if($num_rows == 0) {
-                    $sql = 'insert into cart (prod_id, user_id) values ('.$p_id.','.$_SESSION['cust_id'].')';
+                    $sql = 'insert into cart (prod_id, user_id, quantity) values ('.$p_id.','.$_SESSION['cust_id'].','.$min_order.')';
                     $prep = oci_parse($con, $sql);
                     oci_execute($prep);
                     echo '<center class = "secondary alert">Item added to cart</center>';

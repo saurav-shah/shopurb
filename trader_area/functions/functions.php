@@ -268,8 +268,20 @@ function get_prod($post){
     if($prep){
         $row = oci_fetch_assoc($prep);
         $pname = $row['PROD_TITLE'];
-        $id = $row['PROD_ID'];
-        echo json_encode(['status'=>'success', 'pname'=>$pname ,'id'=>$id ]);
+        $id = $row['PROD_ID']; 
+        $cat_id = $row['FK_CAT_ID'];
+        $shop_id = $row['FK_SHOP_ID'];
+        $stock = $row['STOCK']; 
+        $price = $row['PROD_PRICE'];
+        $a_info = $row['ALLERGY_INFO'];
+        $desc = $row['PROD_DESC'];
+        $tags = $row['KEYWORDS'];
+        $img = $row['PROD_IMG'];
+        $min_order = $row['MIN_ORDER'];
+        $max_order = $row['MAX_ORDER'];
+        $dis = $row['DISCOUNT'];
+        
+        echo json_encode(['status'=>'success', 'pname'=>$pname ,'id'=>$id ,'cat_id'=>$cat_id ,'shop_id'=>$shop_id ,'stock'=>$stock ,'price'=>$price ,'a_info'=>$a_info ,'desc'=>$desc,'tags'=>$tags,'img'=>$img,'min_order'=>$min_order ,'max_order'=>$max_order,'dis'=>$dis  ]);
     }
     else{
          echo json_encode(['status'=>'fail','message'=>'Failed to get data']);
@@ -299,17 +311,105 @@ function update_prod($post){
     
     global $con;
     $id = $post['id'];
-    $sname = $post['sname'];
-    $sql= "update shop set shop_name = '$sname' where shop_id = $id";
+    $pname = $post['prod_name'];
+    $cat_id = $post['prod_cat'];
+    $stock = $post['stock'];
+    $price = $post['price'];
+    $allergy = $post['allergy'];
+    $desc = $post['prod_desc'];
+    $keywords = $post['keywords'];
+    $max_order = $post['max_order'];
+    $min_order = $post['min_order'];
+    $discount = $post['discount'];
+    $shop_id = $post['shop_id'];
     
-    $update= oci_parse($con, $sql);
-    oci_execute($update);
-    if($update){
-        echo json_encode(['status'=>'success','message'=>'Shop Updated!']);
+    $sql = 'select prod_img from product where prod_id = '.$id;
+    $get=oci_parse($con, $sql);
+    oci_execute($get);
+    $row = oci_fetch_assoc($get);
+    $old_pic = $row['PROD_IMG'];
+    
+    $updated = false;
+    
+    
+    if(strpbrk($pname, '1234567890')) {
+        echo json_encode(['status'=>'fail','message'=>'No numbers allowed in Product Title']);
+    } else{
+        
+        $sql="update product set prod_title = '$pname' where prod_id = $id ";
+        $updated = true;
     }
-    else{
-        echo json_encode(['status'=>'fail','message'=>'Could not Update!']);
-    }
+    
+    
+    if($updated){
+    // if image was uploaded
+    if(is_uploaded_file($_FILES['image']['tmp_name'])) {
+            
+        // check for error
+            $image = $_FILES['image']['name'];    
+            $image_temp = $_FILES['image']['tmp_name'];    
+            $check_image = getimagesize($_FILES["image"]["tmp_name"]);
+            
+            if($check_image == 0) {
+                // error found then throw error
+               
+                    echo json_encode(['status'=>'fail','message'=>'Invalid Image']); 
+                    $updated = false;
+                
+            }
+            
+             else{
+                 
+                unlink('product_images/'.$old_pic);
+                move_uploaded_file($image_temp,'product_images/'.$image);
+
+                //update image
+                $sql = "update product set prod_img = '$image' where prod_id = $id";
+                oci_execute(oci_parse($con, $sql));
+                $updated = true;
+             }
+            
+        }
+    
+    
+     }
+    
+     if($updated) {
+          $id = $post['id'];
+    $pname = $post['prod_name'];
+    $cat_id = $post['prod_cat'];
+    $stock = $post['stock'];
+    $price = $post['price'];
+    $allergy = $post['allergy'];
+    $desc = $post['prod_desc'];
+    $keywords = $post['keywords'];
+    $max_order = $post['max_order'];
+    $min_order = $post['min_order'];
+    $discount = $post['discount'];
+    $shop_id = $post['shop_id'];
+         
+    $sql = "update product set 
+            fk_cat_id = $cat_id, 
+            fk_shop_id = $shop_id, 
+            stock = $stock, 
+            prod_price = $price, 
+            min_order = $min_order, 
+            max_order = $max_order, 
+            discount = $discount, 
+            allergy_info = '$allergy', 
+            prod_desc = '$desc', 
+            keywords = '$keywords' 
+            where prod_id = $id";
+         $update = oci_parse($con, $sql);
+         oci_execute($update);
+         if($update){
+             echo json_encode(['status'=>'success', 'message'=>'Product Updated!']);
+         } else {
+             echo json_encode(['status'=>'fail', 'message'=>'Product couldn\'t be Updated!']);
+         }
+     }
+    
+  
 }
 
 
@@ -443,3 +543,5 @@ function get_prod_data() {
 }
 
 ?>
+
+

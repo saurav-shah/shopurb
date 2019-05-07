@@ -1,17 +1,19 @@
 $(function(){
     load_prod_data();   
 
+    
+    
 
     $('.form').on('submit', function(e){
-       $form = $(this);
-       e.preventDefault();        
-       crud($form);
+        e.preventDefault(); 
+        $form = $(this); crud($form);
       
     });
     
-    $('#add_update').on('submit', function(e){
+    $('.add_update').on('submit', function(e){
         
         $form = $(this);
+        resetMessage();
         e.preventDefault();
         $.ajax({
         type: $(this).attr('method'),
@@ -22,7 +24,7 @@ $(function(){
         processData:false,
 
         success: function(response){
-        $('#add_update')[0].reset();
+        $('.add_update')[0].reset();
 
         response = $.parseJSON(response);
         if(response.status == 'success'){
@@ -47,7 +49,7 @@ $(function(){
 $(function(){
    
     $('#product_name').keyup(function(){
-        var regexp = /^[a-zA-Z]+$/;
+        var regexp = /^[a-zA-Z ]+$/;
     if(regexp.test($('#product_name').val())){
          $('#product_name').closest('.form-group').removeClass('has-error');
         $('#product_name').closest('.form-group').addClass('has-success');
@@ -91,19 +93,36 @@ function getRecord(actionName, id){
                 
                 if(actionName == 'update'){
                     
-                    $modal = $('#update-modal');
-                    
+                    $modal = $('#update-modal');                     
+                    $form = $modal.find('.add_update');
+                    $form.find('.id').val(response.id);
+                    $form.find('.pname').val(response.pname);
+                    $form.find('.cat').val(response.cat_id);
+                    $form.find('.shop').val(response.shop_id);
+                    $form.find('.stock').val(response.stock);
+                    $form.find('.price').val(response.price);
+                    $form.find('.a_info').val(response.a_info);
+                    $form.find('.desc').val(response.desc);
+                    $form.find('.tags').val(response.tags);
+                    $form.find('.img').val(response.img);
+                    $form.find('.min_order').val(response.min_order);
+                    $form.find('.max_order').val(response.max_order);
+                    $form.find('.discount').val(response.dis);
+                    $form.find('.min_order').attr('max',response.stock - 1);
+                    $form.find('.max_order').attr('max',response.stock - 1);
+                    $modal.modal('show');
                 
                 }
                 else if(actionName == 'delete'){
-                     $modal = $('#delete-modal');
+                    $modal = $('#delete-modal');
+                    $form = $modal.find('.form');
+                    $form.find('.id').val(response.id);
+                    $form.find('.pname').val(response.pname);
+                    $modal.modal('show');
                     
                 }
              //console.log($modal.find('.form').html());
-                $form = $modal.find('.form');
-                $form.find('.id').val(response.id);
-                $form.find('.pname').val(response.pname);
-                $modal.modal('show');
+               
             }
         }
         

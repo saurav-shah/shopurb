@@ -3,7 +3,7 @@ CREATE TABLE cart
 (
   user_id integer,
   prod_id integer,
-  quantity integer DEFAULT 1
+  quantity integer
 );
 
 CREATE TABLE category

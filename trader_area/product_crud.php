@@ -110,7 +110,7 @@ Add</a>
 <div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 <div class="modal-dialog" role="document">
 <!--add form-->
-<form action="add_prod.php" method="post" enctype="multipart/form-data" id="add_update">
+<form action="add_prod.php" method="post" enctype="multipart/form-data" class="add_update">
 <div class="modal-content">
 <div class="modal-header">
 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -242,7 +242,7 @@ echo "<option value='$shop_id'>$shop_name</option>";
 <div class="modal fade" id="update-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 <div class="modal-dialog" role="document">
 <!--update form-->
-<form action="update_prod.php" id="add_update" method="post" enctype="multipart/form-data" class="form">
+<form action="update_prod.php" class="add_update" method="post" enctype="multipart/form-data">
 <div class="modal-content">
 <div class="modal-header">
 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -250,7 +250,7 @@ echo "<option value='$shop_id'>$shop_name</option>";
 </div>
 <div class="modal-body">
 
-<div class="form-group">
+<div class="form-group"><input type="hidden" class="id" name="id">
 
 <!--error-->
 <div class="status"></div>
@@ -260,7 +260,7 @@ echo "<option value='$shop_id'>$shop_name</option>";
 <div class="form-group ">
 <label for="product_name">Product Title</label>
 
-<input id="product_name" name="prod_name" placeholder="Product Title" class="form-control" type="text" required>
+<input id="product_name" name="prod_name" placeholder="Product Title" class="form-control pname" type="text" required>
 
 
 </div>
@@ -268,7 +268,7 @@ echo "<option value='$shop_id'>$shop_name</option>";
 <div class="form-group ">
 <label for="product_category">Category</label>
 
-<select id="product_category" name="prod_cat" class="form-control" required>
+<select id="product_category" name="prod_cat" class="form-control cat" required>
 <option disabled selected>--Select a category--</option>
 
 <?php
@@ -293,7 +293,7 @@ echo "<option value='$cat_id'>$cat_title</option>";
 <div class="form-group ">
 <label for="shop">Shop</label>
 
-<select id="shop" name="shop_id" class="form-control" required>
+<select id="shop" name="shop_id" class="form-control shop" required>
 <option disabled selected>--Choose a Shop--</option>
 
 <?php
@@ -318,7 +318,7 @@ echo "<option value='$shop_id'>$shop_name</option>";
 <div class="form-group ">
 <label  for="available_quantity">Stock</label>
 
-<input id="available_quantity" min="1" name="stock" placeholder="Stock Available" class="form-control" required type="number">
+<input id="available_quantity" min="1" name="stock" placeholder="Stock Available" class="stock form-control" required type="number">
 
 </div>
 <!-- Price-->
@@ -326,7 +326,35 @@ echo "<option value='$shop_id'>$shop_name</option>";
 
 <label for="price" >Price</label>
 
-<input min="1" type="number" name="price" class="form-control" required placeholder="Product Price" id="price">
+<input min="1" type="number" name="price" class="price form-control" required placeholder="Product Price" id="price">
+
+
+</div>
+<!-- Min Order-->
+<div class="form-group ">
+
+<label for="min" >Minimum Order</label>
+
+
+<input min="1" type="number" name="min_order" class="min_order form-control" required placeholder="Min Order" id="min">
+
+
+</div>
+<!-- Max Order-->
+<div class="form-group ">
+
+<label for="max" >Maximum Order</label>
+
+<input min="1" type="number" name="max_order" class="max_order form-control" required placeholder="Max Order" id="max">
+
+
+</div>
+<!-- Discount-->
+<div class="form-group ">
+
+<label for="dis" >Discount Percent</label>
+
+<input min="0" max="100" type="number" name="discount" class="discount form-control" required placeholder="Discount" id="dis">
 
 
 </div>
@@ -335,7 +363,7 @@ echo "<option value='$shop_id'>$shop_name</option>";
 
 <label for="ai">Allergy Information</label>
 
-<textarea rows="5" name="allergy" class="form-control" required placeholder="Alergy Information" id="ai"></textarea>
+<textarea rows="5" name="allergy" class="a_info form-control" required placeholder="Alergy Information" id="ai"></textarea>
 
 
 </div>
@@ -343,28 +371,28 @@ echo "<option value='$shop_id'>$shop_name</option>";
 <div class="form-group ">
 <label  for="filebutton">Image</label>
 
-<input id="filebutton" name="image" class="input-file" type="file" required multiple>
+<input id="filebutton" name="image" class="input-file" type="file">
 
 </div>
 <!-- Description -->
 <div class="form-group ">
 <label  for="product_description">Product Description</label>
 
-<textarea rows="5" placeholder="Product Description" class="form-control" id="product_description" name="prod_desc" required></textarea>
+<textarea rows="5" placeholder="Product Description" class="desc form-control" id="product_description" name="prod_desc" required></textarea>
 
 </div>
 <!-- Keywords -->
 <div class="form-group">
 <label  for="keywords">Keywords</label>
 
-<textarea rows="5" placeholder="Keywords" class="form-control" id="keywords" name="keywords" required></textarea>
+<textarea rows="5" placeholder="Keywords" class="tags form-control" id="keywords" name="keywords" required></textarea>
 
 </div>
 </div>
 
 <div class="modal-footer">
 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-<button type="submit" class="btn btn-primary">Update Product</button>
+<button type="submit" class="btn btn-success">Update</button>
 </div>
 </div>
 </form>
@@ -392,7 +420,7 @@ echo "<option value='$shop_id'>$shop_name</option>";
 </div>
 <div class="modal-footer">
 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-<button type="submit" class="btn btn-danger">Delete Product</button>
+<button type="submit" class="btn btn-danger">Delete</button>
 </div>
 </div>
 </form>
