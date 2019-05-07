@@ -50,9 +50,19 @@ if(isset($_POST['register'])) {
     $sql = "select * from users where product_line = '$p_line'";
     $prep = oci_parse($con, $sql);
     oci_execute($prep);
-    $p_line_count = oci_fetch_all($prep, $out); 
-        
-    if($num_rows != 0) {
+    $p_line_count = oci_fetch_all($prep, $out);
+    
+    $sql = "select count(*) from users where role = 'Trader'";
+    $prep = oci_parse($con, $sql);
+    oci_execute($prep);
+    oci_fetch($prep);	
+	$trader_count = oci_result($prep,'COUNT(*)');
+    
+    if($trader_count >= 10) {
+        $error = '<p>You cannot create any more trader accounts at the moment. Please try again in future!</p>';
+            
+    }      
+    else if($num_rows != 0) {
         $error = '<p>Username is taken. Choose another one.</p>';
             
     }  
@@ -125,12 +135,15 @@ if(isset($_POST['register'])) {
             $mail->Body    = "
             
             <img style=\"display: block;\" src=\"https://2.bp.blogspot.com/-eeGplg5TLGE/XL_a8A4DoKI/AAAAAAAADVM/_0KAjIU3tcgKuUrM5ZYH_JhJyjBu08iLACLcBGAs/s320/logo.png\" width=\"200\" /><br>
-            <strong>Dear $u,</strong><br>
+            <strong>Dear $f $l,</strong><br>
             <p>Thank You for Registering with Shopurb.</p>
             
+            <p><em>Username:</em> $u</p>
+            <p><em>Password:</em> $p1</p>
             <p>Account Type: $role</p>
             
             <p>Status: Pending Verification </p>
+            <p>You can log in to your dashboard and access database with above credentials once your account is verified.</p>
             
             <p>Click the link to below to verify your account.</p> <br>
             

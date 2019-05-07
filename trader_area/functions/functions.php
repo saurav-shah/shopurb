@@ -160,25 +160,49 @@ function add_shop($post){
     global $con;
     global $trader_id;
     $shop_name = $post['sname'];
+    $unique = true;
     
-    if(get_shop_count() < 1){
-   // if(true){
+    
+    $sql ='select shop_name from shop';
+    $get = oci_parse($con, $sql);
+    oci_execute($get);
+    
+    while($row = oci_fetch_assoc($get)){
         
-        $sql = "insert into shop (shop_id, shop_name, fk_trader_id)values(shop_id.nextval,'$shop_name',$trader_id)";
-        
-        $insert= oci_parse($con, $sql);
-        oci_execute($insert);
-        if($insert){
-            echo json_encode(['status'=>'success','message'=>'Shop Added!']);
-        }
-        else{
-           echo json_encode(['status'=>'fail','message'=>'Could not insert into database!']);
+        $s = $row['SHOP_NAME'];
+        if($shop_name == $s ){
+            $unique = false;			
+            break;
         }
         
     }
-    else {
-        echo json_encode(['status'=>'fail','message'=>'Currently you can\'t create more than 1 shop.']);
+   
+    if($unique){
+
+        if(get_shop_count() < 1){
+        // if(true){
+
+            $sql = "insert into shop (shop_id, shop_name, fk_trader_id)values(shop_id.nextval,'$shop_name',$trader_id)";
+
+            $insert= oci_parse($con, $sql);
+            oci_execute($insert);
+            if($insert){
+                echo json_encode(['status'=>'success','message'=>'Shop Added!']);
+            }
+            else{
+               echo json_encode(['status'=>'fail','message'=>'Could not insert into database!']);
+            }
+
+        }
+        else {
+            echo json_encode(['status'=>'fail','message'=>'Currently you can\'t create more than 1 shop.']);
+        } 
+    } 
+    else{
+        echo json_encode(['status'=>'fail','message'=>'Shop name is taken!']);
     }
+    
+    
 }
 
 
