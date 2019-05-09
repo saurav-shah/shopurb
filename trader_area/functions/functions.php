@@ -485,7 +485,7 @@ function get_prod_data() {
     $num = 1;
     $sql = "
     SELECT
-        prod_img ,  prod_title ,  prod_price,  prod_desc , allergy_info , Stock ,       
+        prod_status, prod_img ,  prod_title ,  prod_price,  prod_desc , allergy_info , Stock ,       
         Keywords ,  Min_Order ,  Max_Order,  discount  ,  shop_name  ,prod_id  
     FROM
         product   p, shop      s
@@ -509,6 +509,7 @@ function get_prod_data() {
     $html .= '<th>Max Order</th>';
     $html .= '<th>Discount</th>';
     $html .= '<th>Shop</th>';
+    $html .= '<th>Status</th>';
     $html .= '<th colspan="2">Action</th>';
     $html .= '</tr>';
     $html .= '</thead>';
@@ -531,6 +532,7 @@ function get_prod_data() {
         $max_order= $row['MAX_ORDER'];
         $discount = $row['DISCOUNT'];
         $s_name = $row['SHOP_NAME'];
+        $status = $row['PROD_STATUS'];
            
         $html .= '<tr><td>'.$num.'</td>';
         $html .= '<td>'.$p_title.'<br>';
@@ -545,6 +547,7 @@ function get_prod_data() {
         $html .= '<td> '.$max_order.' </td>';
         $html .= '<td> '.$discount.'%</td>';
         $html .= '<td> '.$s_name.' </td>';
+        $html .= '<td> '.$status.' </td>';
         $html .= '<td>';
         $html .= '<a href="#" data-id="'.$p_id.'" id="update" class="icon"><i class="glyphicon glyphicon-edit" ></i></a>';
         $html .= '</td>';

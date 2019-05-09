@@ -14,9 +14,8 @@ if(isset($_POST['login'])){
     $u = $_POST['uname'];
     $p = $_POST['pass'];
     $p = md5($p);
-   
     
-    
+        
     $sql = "select * from users where username = '$u' and password = '$p'";    
     $select = oci_parse($con, $sql);    
     oci_execute($select);    
@@ -70,6 +69,11 @@ if(isset($_POST['login'])){
         //Invalid Credential
         $error = 'Username or password incorrect';
     }
+        
+    
+   
+    
+    
     
 }
 
@@ -88,8 +92,9 @@ if(isset($_POST['login'])){
     <link rel="stylesheet" href="gumby/css/gumby.css">
     <link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="css/login.css" />
-    <script src="gumby/js/libs/modernizr-2.6.2.min.js"></script>
-    <script src="main.js"></script>
+    <script src="gumby/js/libs/modernizr-2.6.2.min.js"></script>    
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script> 
+
 </head>
 
 <body>
