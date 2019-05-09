@@ -74,7 +74,9 @@ function get_cat_products() {
                 $get_cat_prod = oci_parse($con, $sql);
 
                 oci_execute($get_cat_prod);
-
+                $num_rows = oci_fetch_all($get_cat_prod,$out);
+                if($num_rows != 0) {
+                    oci_execute($get_cat_prod);
                 while($row = oci_fetch_assoc($get_cat_prod)){
 
                     $prod_id = $row['PROD_ID'];
@@ -104,7 +106,13 @@ function get_cat_products() {
                 ";
 
 
-                }       
+                } 
+                }
+            else{
+                echo '<center><h3>NO Products Found in this Category!</h3><center>';
+            }
+            
+                      
             
         }
 }
@@ -126,7 +134,11 @@ function get_shop_products() {
                 $get_shop_prod = oci_parse($con, $sql);
 
                 oci_execute($get_shop_prod);
-
+            $num_rows = oci_fetch_all($get_shop_prod,$out);
+            if($num_rows != 0){
+                
+                oci_execute($get_shop_prod);
+                
                 while($row = oci_fetch_assoc($get_shop_prod)){
 
                     $prod_id = $row['PROD_ID'];
@@ -184,7 +196,11 @@ function get_shop_products() {
                    
 
 
-                }       
+                }  
+            }
+            else {
+                echo '<center><h3>No Products Found in this Shop!</h3></center>';
+            }     
             
         }
 }

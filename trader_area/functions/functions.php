@@ -180,7 +180,7 @@ function add_shop($post){
     if($unique){
 
         if(get_shop_count() < 1){
-        // if(true){
+        //if(true){
 
             $sql = "insert into shop (shop_id, shop_name, fk_trader_id)values(shop_id.nextval,'$shop_name',$trader_id)";
 

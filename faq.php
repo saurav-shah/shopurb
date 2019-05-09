@@ -57,8 +57,8 @@ include 'functions/functions.php';
 <strong>Q: Is there a parking facility near delivery site?</strong><br>
 => Yes, there is parking facility near our delivery site. <br><br>
 
-<strong>Q: Delivery location?</strong><br>
-=> LOCATION MAP <br><br>
+<strong>Q: Delivery location?</strong><br><br>
+<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d6677.163310503609!2d-1.7096395870379362!3d53.7230057180497!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2snp!4v1557318627916!5m2!1sen!2snp" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe> <br><br>
 
 <hr>
 <h4>WEBSITE</h4>

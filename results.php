@@ -73,13 +73,15 @@ include ('functions/functions.php');
                     
                     $query = $_GET['user_query'];
                     
-                 $sql = "select * from product where keywords like '%$query%'";
+                 $sql = "select * from product where keywords like '%$query%' and prod_status = 'active'";
 
                 $get_prod = oci_parse($con, $sql);
 
                 oci_execute($get_prod);
-
-                while($row = oci_fetch_assoc($get_prod)){
+                $num_rows = oci_fetch_all($get_prod, $out);
+                    if($num_rows != 0){
+                        oci_execute($get_prod);
+                       while($row = oci_fetch_assoc($get_prod)){
 
                     $prod_id = $row['PROD_ID'];
                     $prod_title = $row['PROD_TITLE'];
@@ -108,7 +110,13 @@ include ('functions/functions.php');
                 ";
                     
                     
-                }
+                } 
+                    }
+                    else{
+                        echo '<center><h3>No Products Found!</h3><center>';
+                    }
+
+                
                 }
 
                 
