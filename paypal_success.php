@@ -116,8 +116,7 @@ else {
               ?>
               
               <input type="hidden" name="item_name<?= $i ?>" value="<?= $_POST['item_name'.$i.''] ?>">
-              <input type="hidden" name="quantity<?= $i ?>" value="<?= $_POST['quantity'.$i.''] ?>">              
-              <input type="hidden" name="unit_price<?=$i?>" value="<?=$unit_price?>">
+              <input type="hidden" name="quantity<?= $i ?>" value="<?= $_POST['quantity'.$i.''] ?>">     <input type="hidden" name="unit_price<?=$i?>" value="<?=$unit_price?>">
               <input type="hidden" name="mc_gross_<?=$i?>" value="<?= $_POST['mc_gross_'.$i.''] ?>">
               
               <?php $i++; } ?>

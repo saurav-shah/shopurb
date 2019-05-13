@@ -227,7 +227,7 @@ if(isset($_POST['update'])) {
                 
                 <form action="" method="post" enctype="multipart/form-data">
 
-                    <table class="table">
+                    <table class="table rounded">
 
                        
 
@@ -348,7 +348,7 @@ if(isset($_POST['update'])) {
 
 
 
-                    <div class="primary btn medium"><input type="submit" name="update" value="Update"></div>
+                    <div class="primary pretty btn medium"><input type="submit" name="update" value="Update"></div>
 
 
 

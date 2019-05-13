@@ -60,28 +60,13 @@ require_once('includes/db.php');
             
                 
             oci_execute(oci_parse($con, $insert_invoice));
-                
-                
-                
-                
             
             }
-
-            
-            
-            
         }
-   
-        
-        
     }
     else {
         echo die('Something went wrong');
     }
-
-
-
-
 
 ?>
 <!DOCTYPE html>
@@ -124,8 +109,7 @@ require_once('includes/db.php');
                                     
                                     
                                     
-                                    $p_name = $data['PROD_TITLE'];
-                                   
+                                    $p_name = $data['PROD_TITLE'];                                   
                                     $unit_price = $data['PROD_PRICE'];
                                     $discount = $data['DISCOUNT'];                                    
                                     $qty_price = $qty * $unit_price;
@@ -139,7 +123,6 @@ require_once('includes/db.php');
                            ?>
 
         <input type="hidden" name="item_name_<?= $count ?>" value="<?= $p_name ?>">
-        <input type="hidden" id="item_number_<?= $count ?>" name="item_number" value="<?= $p_id ?>">
         <input type="hidden" name="amount_<?= $count ?>" value="<?= $unit_price ?>">
         <input type="hidden" name="discount_rate_<?= $count ?>" value="<?= $discount ?>">
         <input type="hidden" name="quantity_<?= $count ?>" value="<?= $qty ?>">

@@ -112,7 +112,7 @@ if(isset($_GET['s']) and $_GET['s'] == 'f') {
                                 </td>
 
                                 <td>
-                                    <input name="qty<?= $p_id ?>" type="number" min="<?= $min ?>" max="<?= $max ?>" value="<?= $min ?>">
+                                    <input name="qty<?= $p_id ?>" type="number" min="<?= $min ?>" max="<?= $max ?>" value="<?= $qty ?>">
                                     <?php
 
                                         if(isset($_POST['update'])) {
