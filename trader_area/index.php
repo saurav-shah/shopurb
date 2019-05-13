@@ -46,6 +46,13 @@ include 'functions/functions.php'; ?>
                             <span class="pull-right label label-success hidden-xs hidden-sm"><?=get_prod_count();?></span>
                         </a>
                     </li>
+                    <li class="link">
+                        <a href="http://localhost:8080/apex/f?p=109:LOGIN_DESKTOP:30954860993183:::::">
+                            <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+                            <span class="hidden-xs hidden-sm">Sales Report</span>
+                            
+                        </a>
+                    </li>
                     
 				</ul>
             </div>

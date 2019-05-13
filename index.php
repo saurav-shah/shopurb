@@ -27,7 +27,7 @@ include 'functions/functions.php';
     <?php include('navbar.php');
     include('searchetc.php');?> 
     
-  <div id="wrapper">
+  <div id="wrapper" class="slider">
 <div class="row theme-default">
     <div class="nivoSlider" id="slider">
 
@@ -54,7 +54,7 @@ include 'functions/functions.php';
         
         
 <?php
-                 $sql = "select * from (select * from product order by dbms_random.value) where rownum <= 6";
+                 $sql = "select * from (select * from product where prod_status = 'active' order by dbms_random.value) where rownum <= 6";
 
                 $get_prod = oci_parse($con, $sql);
 
@@ -67,9 +67,33 @@ include 'functions/functions.php';
                     $prod_cat = $row['FK_CAT_ID'];
                     $prod_img = $row['PROD_IMG'];
                     $prod_price = $row['PROD_PRICE'];
-
+                     $discount = $row['DISCOUNT'];
+                    if($discount != 0) {
+                       
+                        $new_price = $prod_price - (($discount / 100) * $prod_price);
 
                     echo "
+
+
+                 <div class='product_box'>
+
+                    <center><div class='primary badge'>$prod_title</div></center>
+
+                    <img src='trader_area/product_images/$prod_img' alt='$prod_img'>
+
+                    <center>
+                        <p><div class='default badge'>Price: <s>$$prod_price</s>&nbsp;&nbsp;$$new_price</div></p>
+                        <div class='small warning btn'><a href='shop.php?add_cart=$prod_id'>Add to Cart</a></div>
+
+                        <div class='small success btn'><a href='details.php?pro_id=$prod_id'>Details</a></div>
+                    </center>
+
+                </div>
+
+                ";
+                    }
+                    else{
+                         echo "
 
 
                  <div class='product_box'>
@@ -88,7 +112,9 @@ include 'functions/functions.php';
                 </div>
 
                 ";
-
+                        
+                        
+                    }
 
                 }  ?>  
             

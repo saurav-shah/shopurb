@@ -135,12 +135,5 @@ $pdf->Cell(45,5,''.$_POST['grand_total'].'',1,1,'R');
 $pdf->Cell(189,5,'',0,1);
 $pdf->Cell(30,5,'Collection Day: ',0,0);
 $pdf->Cell(159,5,"$collection",0,1);
-
-
-
-
-
-
-
 $pdf -> Output();
 ?>

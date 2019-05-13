@@ -2,7 +2,6 @@
 
 include ('includes/db.php');
 include ('functions/functions.php');
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -28,52 +27,32 @@ include ('functions/functions.php');
     <div id="heading">
         <img src="images/banner.png" alt="banner">
     </div>
-<?php include('navbar.php');
-    include('searchetc.php');?> 
+    <?php include('navbar.php');
+    include('searchetc.php');?>
 
-    
+
 
     <!-- PRODUCT LISTING START-->
     <div id="wrapper">
-
-        <h2>Products</h2>
+        <h2>Product Detail</h2>
+        <div class="row">
+            <div class="btn default pretty medium icon-left entypo icon-left-open-big">
+                <a href='shop.php'>Back</a>
+            </div>
+        </div>
 
         <div class="row" id="products">
 
-            <!-- left side start-->
-            <div class="two columns">
-
-                <center>
-                    <h5 class="title"><strong>Category</strong></h5>
-                </center>
-                
-                <ul>
-                    <?php get_category(); ?>
-
-                </ul>
-
-                <center>
-                    <h5 class="title"><strong>Shop</strong></h5>
-                </center>
-
-                <ul>
-                    <?php get_shop(); ?>
-                </ul>
-            </div>
-            <!-- left side end-->
             
-            
-            
-            <!-- right side start-->
-            <div class="nine columns">
-               
-               <?php
+            <div class="twelve columns">
+
+                <?php
                 
                 if(isset($_GET['pro_id'])){
                     
-                    $pro_id = $_GET['pro_id'];
+                $pro_id = $_GET['pro_id'];
                     
-                 $sql = "select * from product where prod_id = $pro_id";
+                $sql = "select * from product where prod_id = $pro_id";
 
                 $get_prod = oci_parse($con, $sql);
 
@@ -87,65 +66,164 @@ include ('functions/functions.php');
                     $prod_price = $row['PROD_PRICE'];
                     $prod_desc = $row['PROD_DESC'];
                     $allergy = $row['ALLERGY_INFO'];
+                    $discount = $row['DISCOUNT'];
+                    $min_order = $row['MIN_ORDER'];
+                    $max_order = $row['MAX_ORDER'];
+                    $stock = $row['STOCK'];
+                    $in_stock =($stock != 1)?true:false;
                     
+                    if($in_stock){
+                        $stock_status = 'In Stock';
+                        $color = '#4CAF50';
+                    }
+                    else {
+                        $stock_status = 'Out of Stock';
+                        $color = '#CA3838';
+                    }
+                    
+
+                    
+                    if($discount != 0) {
+                       
+                        $new_price = $prod_price - (($discount / 100) * $prod_price);
 
 
                     echo "
 
+                 <div class='row'>
+                <div class='six columns'>
+                
+                
+                <center>
+                     <div class='product_detail'>
 
-                 <div class='product_detail'>
+                     <h3>$prod_title</h3>
 
-                    <center><h3>$prod_title</h3></center>
+                        <img src='trader_area/product_images/$prod_img' alt='$prod_img' >
 
-                    <center><img src='trader_area/product_images/$prod_img' alt='$prod_img' ><center>
 
-                    <center>
-                        <p><div class='default badge'>Price: $$prod_price</div></p>
-                        <div class=' small warning btn'><a href='shop.php?add_cart=$prod_id'>Add to Cart</a></div>
+                            <p>
+                                <div class='default badge'>Price: <s>$$prod_price</s>&nbsp;&nbsp;$$new_price</div>
+                            </p>
+                        
+                            
+                            <div class=' medium warning btn'>
+                                <a href='shop.php?add_cart=$prod_id'>Add to Cart</a>
+                            </div>
 
-                        <div class=' small success btn'><a href='shop.php'>Go Back</a></div>
-                    </center>
-
+                    </div>
+                </center>
+                
                 </div>
                 
-                <div>
-                    <h4>Description:</h4>
-                    <p>$prod_desc</p>
+              
+               <div class='six columns'>
+               
+                   <section class='tabs'>
+
+                        <ul class='tab-nav'>
+                            <li class='active'><a href='#'>Description</a></li>
+                            <li><a href='#'>Allergy</a></li>
+                        </ul>
+
+                        <div class='tab-content active'>
+                            <p style=' color: $color; font-weight:bold; font-size: 23px;'>$stock_status</p>
+                            <p>$prod_desc</p>
+                            <p>Minmun Order: $min_order</p>
+                            <p>Maximum Order: $max_order</p>
+                        </div>
+
+                        <div class='tab-content'>
+                            <p>$allergy</p>
+                        </div>
+
+                   </section>
                 </div>
                 
-                <div>
-                    <h4>Allergy Information:</h4>
-                    <p>$allergy</p>
-                </div>
+               </div>
                 
                
 
                 ";
-                    
-                    
                 }
-                }
+                else{
+                         echo "
+                <div class='row'>
+                <div class='six columns'>
+                
+                
+                <center>
+                     <div class='product_detail'>
 
+                     <h3>$prod_title</h3>
+
+                        <img src='trader_area/product_images/$prod_img' alt='$prod_img' >
+
+
+                            <p>
+                                <div class='default badge'>Price: $$prod_price</div>
+                            </p>
+                            <div class=' medium warning btn'>
+                                <a href='shop.php?add_cart=$prod_id'>Add to Cart</a>
+                            </div>
+
+                    </div>
+                </center>
                 
-                ?>
+                </div>
                 
+              
+               <div class='six columns'>
+               
+                   <section class='tabs'>
+
+                        <ul class='tab-nav'>
+                            <li class='active'><a href='#'>Description</a></li>
+                            <li><a href='#'>Allergy</a></li>
+                        </ul>
+
+                        <div class='tab-content active'>
+                            <p style='color: $color; font-weight: bold; font-size: 23px;'>$stock_status</p>
+                            <p>$prod_desc</p>
+                            <p>Minmun Order: $min_order</p>
+                            <p>Maximum Order: $max_order</p>
+                            
+                           
+                        </div>
+
+                        <div class='tab-content'>
+                            <p>$allergy</p>
+                        </div>
+
+                   </section>
+                </div>
+                
+               </div> ";
+                        
+                }
+                    
+            }
+        }
+                
+?>
+
             </div>
             <!-- right side end-->
         </div>
-        
+
     </div>
 
     <!-- PRODUCT LISTING END-->
 
-<hr class="line">
-    
+    <hr class="line">
+
     <footer>
         <?php include('footer.php')?>
     </footer>
 
     <script src=" gumby/js/libs/jquery-2.0.2.min.js"></script>
     <script gumby-touch="gumby/js/libs" src="gumby/js/libs/gumby.min.js"></script>
-  
+
 </body>
 
 </html>
