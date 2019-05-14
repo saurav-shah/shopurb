@@ -11,7 +11,7 @@
                 </div>
                 <div class=" three columns">
                 <div class="bold">LINKS</div><br/>
-                <a href="products.php">Products</a><br/>
+                <a href="shop.php">Products</a><br/>
                 <a href="about.php">Home</a><br/>
                 <a href="about.php">About Us</a><br/>
                 <a href="contact.php">Contact US</a>
