@@ -1,4 +1,3 @@
-
 CREATE TABLE cart
 (
   user_id integer,
@@ -61,7 +60,7 @@ CREATE TABLE product
   discount integer DEFAULT 0
 );
 
-ALTER TABLE products ADD CONSTRAINT pk_products
+ALTER TABLE product ADD CONSTRAINT pk_products
   PRIMARY KEY (prod_id);
 
 CREATE TABLE shop
@@ -81,7 +80,7 @@ CREATE TABLE users
   password varchar2(255),
   email varchar2(255),
   dob date,
-  firtsname varchar2(255),
+  firstname varchar2(255),
   lastname varchar2(255),
   address varchar2(255),
   role varchar2(255),

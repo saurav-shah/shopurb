@@ -1,8 +1,7 @@
-
-ALTER TABLE products
+ALTER TABLE product
   DROP CONSTRAINT fk_products_category;
 
-ALTER TABLE products
+ALTER TABLE product
   DROP CONSTRAINT fk_products_shop;
 
 ALTER TABLE shop
@@ -16,7 +15,7 @@ DROP TABLE invoice cascade constraints;
 
 DROP TABLE orders cascade constraints;
 
-DROP TABLE products cascade constraints;
+DROP TABLE product cascade constraints;
 
 DROP TABLE shop cascade constraints;
 
@@ -30,3 +29,6 @@ DROP SEQUENCE invoice_id;
 
 DROP SEQUENCE order_id;
 
+DROP SEQUENCE cat_id;
+
+DROP SEQUENCE shop_id;
