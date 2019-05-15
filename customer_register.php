@@ -108,7 +108,7 @@ if(isset($_POST['register'])) {
             $mail->Password = PASS;                           
             $mail->SMTPSecure = 'tls';                          
             $mail->Port = 587;  
-            $mail->setFrom(EMAIL, 'Shopurb Registration');
+            $mail->setFrom(EMAIL, 'Shopurb');
             $mail->addAddress("$e");                           
             $mail->addReplyTo(EMAIL); 
             $mail->isHTML(true); 

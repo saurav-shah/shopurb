@@ -2,18 +2,18 @@
 -- username: butcher
 -- password: Butcher@123
 -- same username/password format for all traders
-Insert into USERS (USER_ID,USERNAME,EMAIL,PASSWORD,VKEY,VERIFIED,CREATED_AT,ROLE,FIRSTNAME,LASTNAME,ADDRESS,DOB,PROFILE_PICTURE,STATUS,PHONE,PRODUCT_LINE) values (51,'butcher','none','7782bbd343598cde8404b6ba3e849bd3','2032738ea34e78746c7bd39529748f5a',1,to_date('01/MAY/19','DD/MON/RR'),'Trader','Efrain ','Hernandez','3021 Conference Center Way',to_date('14/AUG/90','DD/MON/RR'),'9.jpg','active','9810000009','Butcher');
-Insert into USERS (USER_ID,USERNAME,EMAIL,PASSWORD,VKEY,VERIFIED,CREATED_AT,ROLE,FIRSTNAME,LASTNAME,ADDRESS,DOB,PROFILE_PICTURE,STATUS,PHONE,PRODUCT_LINE) values (53,'fishmonger','david@xyz.com','d8738e6eab3129c8c8b30ff90af755b7','e6398d6c4453e4aa34795f0f7d41702c',1,to_date('01/MAY/19','DD/MON/RR'),'Trader','David ','Richmond','Clarksville, VA 23927',to_date('06/MAY/90','DD/MON/RR'),'34.jpg','active','9810000000','Fishmonger');
-Insert into USERS (USER_ID,USERNAME,EMAIL,PASSWORD,VKEY,VERIFIED,CREATED_AT,ROLE,FIRSTNAME,LASTNAME,ADDRESS,DOB,PROFILE_PICTURE,STATUS,PHONE,PRODUCT_LINE) values (52,'greengrocer','stella@xyz.com','da2a33f6d5939b6e7687cb1f0a7fcc8d','88c4e3ad78fe43e00de97c6c6a85506c',1,to_date('01/MAY/19','DD/MON/RR'),'Trader','Stella ','Toledo','4058 Spadafore Drive',to_date('02/MAR/90','DD/MON/RR'),'13.jpg','active','9810000000','Greengrocer');
-Insert into USERS (USER_ID,USERNAME,EMAIL,PASSWORD,VKEY,VERIFIED,CREATED_AT,ROLE,FIRSTNAME,LASTNAME,ADDRESS,DOB,PROFILE_PICTURE,STATUS,PHONE,PRODUCT_LINE) values (54,'bakery','john@xyz.com','3f4267fe61230cd47f4d956bf8579352','bb25d27fb8129da34022cc40eed68a52',1,to_date('01/MAY/19','DD/MON/RR'),'Trader','John ','White','Clarksville, VA 23927',to_date('08/JUL/90','DD/MON/RR'),'73.jpg','active','9810000000','Bakery');
-Insert into USERS (USER_ID,USERNAME,EMAIL,PASSWORD,VKEY,VERIFIED,CREATED_AT,ROLE,FIRSTNAME,LASTNAME,ADDRESS,DOB,PROFILE_PICTURE,STATUS,PHONE,PRODUCT_LINE) values (55,'delicatessan','mary@xyz.com','86655275aa3577e13f746fed45c20ae5','964d8c2ddbf64ba061ac48eb36cebd9e',1,to_date('01/MAY/19','DD/MON/RR'),'Trader','Mary ','Lewis','956 Saint Marys Avenue',to_date('10/SEP/90','DD/MON/RR'),null,'active','9810000000','Delicatessan');
+Insert into USERS (USER_ID,USERNAME,EMAIL,PASSWORD,VKEY,VERIFIED,CREATED_AT,ROLE,FIRSTNAME,LASTNAME,ADDRESS,DOB,PROFILE_PICTURE,STATUS,PHONE,PRODUCT_LINE) values (1,'butcher','none','7782bbd343598cde8404b6ba3e849bd3','2032738ea34e78746c7bd39529748f5a',1,to_date('01/MAY/19','DD/MON/RR'),'Trader','Efrain ','Hernandez','3021 Conference Center Way',to_date('14/AUG/90','DD/MON/RR'),'9.jpg','active','9810000009','Butcher');
+Insert into USERS (USER_ID,USERNAME,EMAIL,PASSWORD,VKEY,VERIFIED,CREATED_AT,ROLE,FIRSTNAME,LASTNAME,ADDRESS,DOB,PROFILE_PICTURE,STATUS,PHONE,PRODUCT_LINE) values (2,'fishmonger','david@xyz.com','d8738e6eab3129c8c8b30ff90af755b7','e6398d6c4453e4aa34795f0f7d41702c',1,to_date('01/MAY/19','DD/MON/RR'),'Trader','David ','Richmond','Clarksville, VA 23927',to_date('06/MAY/90','DD/MON/RR'),'34.jpg','active','9810000000','Fishmonger');
+Insert into USERS (USER_ID,USERNAME,EMAIL,PASSWORD,VKEY,VERIFIED,CREATED_AT,ROLE,FIRSTNAME,LASTNAME,ADDRESS,DOB,PROFILE_PICTURE,STATUS,PHONE,PRODUCT_LINE) values (3,'greengrocer','stella@xyz.com','da2a33f6d5939b6e7687cb1f0a7fcc8d','88c4e3ad78fe43e00de97c6c6a85506c',1,to_date('01/MAY/19','DD/MON/RR'),'Trader','Stella ','Toledo','4058 Spadafore Drive',to_date('02/MAR/90','DD/MON/RR'),'13.jpg','active','9810000000','Greengrocer');
+Insert into USERS (USER_ID,USERNAME,EMAIL,PASSWORD,VKEY,VERIFIED,CREATED_AT,ROLE,FIRSTNAME,LASTNAME,ADDRESS,DOB,PROFILE_PICTURE,STATUS,PHONE,PRODUCT_LINE) values (4,'bakery','john@xyz.com','3f4267fe61230cd47f4d956bf8579352','bb25d27fb8129da34022cc40eed68a52',1,to_date('01/MAY/19','DD/MON/RR'),'Trader','John ','White','Clarksville, VA 23927',to_date('08/JUL/90','DD/MON/RR'),'73.jpg','active','9810000000','Bakery');
+Insert into USERS (USER_ID,USERNAME,EMAIL,PASSWORD,VKEY,VERIFIED,CREATED_AT,ROLE,FIRSTNAME,LASTNAME,ADDRESS,DOB,PROFILE_PICTURE,STATUS,PHONE,PRODUCT_LINE) values (5,'delicatessan','mary@xyz.com','86655275aa3577e13f746fed45c20ae5','964d8c2ddbf64ba061ac48eb36cebd9e',1,to_date('01/MAY/19','DD/MON/RR'),'Trader','Mary ','Lewis','956 Saint Marys Avenue',to_date('10/SEP/90','DD/MON/RR'),null,'active','9810000000','Delicatessan');
 
 -- SHOP
-Insert into SHOP (SHOP_ID,SHOP_NAME,FK_TRADER_ID) values (1,'Butcher',51);
-Insert into SHOP (SHOP_ID,SHOP_NAME,FK_TRADER_ID) values (2,'Greengrocer',52);
-Insert into SHOP (SHOP_ID,SHOP_NAME,FK_TRADER_ID) values (3,'Fishmonger',53);
-Insert into SHOP (SHOP_ID,SHOP_NAME,FK_TRADER_ID) values (4,'Bakery',54);
-Insert into SHOP (SHOP_ID,SHOP_NAME,FK_TRADER_ID) values (5,'Delicatessan',55);
+Insert into SHOP (SHOP_ID,SHOP_NAME,FK_TRADER_ID) values (1,'Butcher',1);
+Insert into SHOP (SHOP_ID,SHOP_NAME,FK_TRADER_ID) values (2,'Greengrocer',2);
+Insert into SHOP (SHOP_ID,SHOP_NAME,FK_TRADER_ID) values (3,'Fishmonger',3);
+Insert into SHOP (SHOP_ID,SHOP_NAME,FK_TRADER_ID) values (4,'Bakery',4);
+Insert into SHOP (SHOP_ID,SHOP_NAME,FK_TRADER_ID) values (5,'Delicatessan',5);
 
 -- Caetgory
 Insert into CATEGORY (CAT_ID,CAT_TITLE) values (11,'Bread');

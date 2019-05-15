@@ -14,7 +14,7 @@ else {
     
     
 if(isset($_POST['register'])) {
-    $check_image = 1;
+    $check_image = 1; // to skip the validation at line 86 if the image was not uploaded
     $uploaded = false;
     if(is_uploaded_file($_FILES['pic']['tmp_name'])){
         $image = $_FILES['pic']['name'];    
@@ -127,7 +127,7 @@ if(isset($_POST['register'])) {
             $mail->Password = PASS;                           
             $mail->SMTPSecure = 'tls';                          
             $mail->Port = 587;  
-            $mail->setFrom(EMAIL, 'Shopurb Registration');
+            $mail->setFrom(EMAIL, 'Shopurb');
             $mail->addAddress("$e");                           
             $mail->addReplyTo(EMAIL); 
             $mail->isHTML(true); 

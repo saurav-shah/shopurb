@@ -116,11 +116,11 @@ if($updated) {
             $mail->Password = PASS;                           
             $mail->SMTPSecure = 'tls';                          
             $mail->Port = 587;  
-            $mail->setFrom(EMAIL, 'Shopurb Registration');
+            $mail->setFrom(EMAIL, 'Shopurb');
             $mail->addAddress("$e");                           
             $mail->addReplyTo(EMAIL); 
             $mail->isHTML(true); 
-            $mail->Subject = 'Shopurb Registration';
+            $mail->Subject = 'Profile Updated!';
             $mail->Body    = "
             
             <img style=\"display: block;\" src=\"https://2.bp.blogspot.com/-eeGplg5TLGE/XL_a8A4DoKI/AAAAAAAADVM/_0KAjIU3tcgKuUrM5ZYH_JhJyjBu08iLACLcBGAs/s320/logo.png\" width=\"200\" /><br>

@@ -89,15 +89,15 @@ create or replace Package Body Pkg_Security Is
  
 End Pkg_Security;
 
--- Login Code
+-- Login Code (This could require some changes according to page number)
 Pkg_Security.Process_login(
-     :P9999_USERNAME,
+     :P9999_USERNAME, 
      :P9999_PASSWORD,
      :APP_ID
 
  );
  
- -- Md5 decrypt function 
+ -- Md5 encrypt function 
  create or replace function getMD5(in_string in varchar2)
 return varchar2
 as

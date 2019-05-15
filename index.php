@@ -31,12 +31,22 @@ include 'functions/functions.php';
 <div class="row theme-default">
     <div class="nivoSlider" id="slider">
 
-          <img src="images/slider_images/vegetable_fresh_food_nutrition_market_cuisine_cauliflower_broccoli-572682.jpg" data-thumb="images/slider_images/vegetable_fresh_food_nutrition_market_cuisine_cauliflower_broccoli-572682.jpg" alt="" title="Fresh Vegetables"/>
-          <img src="images/slider_images/meat-wallpapers-28272-3465142.jpg" data-thumb="images/tuna.jpg" alt="" title="Fresh Meats" />
-          <img src="images/slider_images/dessert-bokeh-docorations.jpg" data-thumb="images/slider_images/dessert-bokeh-docorations.jpg" alt="" title="Dessert Bokeh Decorations" /> 
-          <img src="images/slider_images/food_cookies_donuts-1366x768.jpg" data-thumb="images/slider_images/food_cookies_donuts-1366x768.jpg" alt="" title="Cookies and Donuts" /> 
-          <img src="images/slider_images/videoblocks-close-up-of-a-delicatessen-display-case-with-a-variety-of-foods-filled-with-cheese-at-naschtmarkt-in-vienna-austria_ss7ps1e_z_thumbnail-full01.png" data-thumb="images/slider_images/videoblocks-close-up-of-a-delicatessen-display-case-with-a-variety-of-foods-filled-with-cheese-at-naschtmarkt-in-vienna-austria_ss7ps1e_z_thumbnail-full01.png" alt="" title="Delicatessan" />  
-          <img src="images/slider_images/Coron-Restaurants.jpg" data-thumb="images/slider_images/Coron-Restaurants.jpg" alt="" title="Fish" /> 
+          <img src="images/slider_images/vegetable_fresh_food_nutrition_market_cuisine_cauliflower_broccoli-572682.jpg" data-thumb="images/slider_images/vegetable_fresh_food_nutrition_market_cuisine_cauliflower_broccoli-572682.jpg" alt="cauliflower" title="Fresh Vegetables"/>
+          
+          <img src="images/slider_images/meat-wallpapers-28272-3465142.jpg" data-thumb="images/meat-wallpapers-28272-3465142.jpg" alt="meat" title="Fresh Meats" />
+          
+          <img src="images/slider_images/dessert-bokeh-docorations.jpg" data-thumb="images/slider_images/dessert-bokeh-docorations.jpg" alt="dessert" title="Dessert Bokeh Decorations" /> 
+          
+          <img src="images/slider_images/food_cookies_donuts-1366x768.jpg" data-thumb="images/slider_images/food_cookies_donuts-1366x768.jpg" alt="cookie" title="Cookies and Donuts" /> 
+          
+          <img src="images/slider_images/videoblocks-close-up-of-a-delicatessen-display-case-with-a-variety-of-foods-filled-with-cheese-at-naschtmarkt-in-vienna-austria_ss7ps1e_z_thumbnail-full01.png" data-thumb="images/slider_images/videoblocks-close-up-of-a-delicatessen-display-case-with-a-variety-of-foods-filled-with-cheese-at-naschtmarkt-in-vienna-austria_ss7ps1e_z_thumbnail-full01.png" alt="delicatessan" title="Delicatessan" />  
+          
+          <img src="images/slider_images/Coron-Restaurants.jpg" data-thumb="images/slider_images/Coron-Restaurants.jpg" alt="fish" title="Fish" /> 
+          
+          <img src="images/slider_images/chocolate-4.jpg" data-thumb="images/slider_images/chocolate-4.jpg" alt="" title="Chocolate" /> 
+          <img src="images/slider_images/farmers-market-fresh-vegetable-ripe-wallpaper-preview.jpg" data-thumb="images/slider_images/farmers-market-fresh-vegetable-ripe-wallpaper-preview.jpg" alt="farmer" title="Farmer's Market" /> 
+          
+          <img src="images/slider_images/Pound_Cake_Powdered_sugar_554827_1366x768.jpg" data-thumb="images/slider_images/Pound_Cake_Powdered_sugar_554827_1366x768.jpg" alt="pound_cake" title="Cake" /> 
 
     </div>
     
