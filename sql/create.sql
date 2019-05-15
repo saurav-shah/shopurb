@@ -94,6 +94,14 @@ CREATE TABLE users
   
 );
 
+CREATE TABLE feedback (
+    customer_id integer,
+    customer_name varchar2(255),
+    subject varchar2(255),
+    message varchar2(255)
+);
+
+
 ALTER TABLE users ADD CONSTRAINT pk_users
   PRIMARY KEY (user_id);
 

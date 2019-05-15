@@ -235,11 +235,11 @@ if(isset($_POST['update'])) {
                             <td><label for="uname">Username: </label></td>
                             <td>
 
-                                <li class="field">
+                                <div class="field">
 
                                     <input disabled id="uname" class="input wide" type="text" name="uname" value="<?=$username?>">
 
-                                </li>
+                                </div>
                             </td>
 
                         </tr>
@@ -249,10 +249,10 @@ if(isset($_POST['update'])) {
 
                             <td><label for="fname">First Name: </label></td>
                             <td>
-                                <li class="field">
+                                <div class="field">
 
                                     <input required id="fname" class="input wide" type="text" name="fname" value="<?=$fname?>">
-                                </li>
+                                </div>
                             </td>
                         </tr>
 
@@ -263,11 +263,11 @@ if(isset($_POST['update'])) {
 
                             <td><label for="lname">Last Name: </label></td>
                             <td>
-                                <li class="field">
+                                <div class="field">
 
                                     <input required id="lname" class="input wide" type="text" name="lname" value="<?=$lname?>">
 
-                                </li>
+                                </div>
                             </td>
 
                         </tr>
@@ -278,10 +278,10 @@ if(isset($_POST['update'])) {
 
                             <td><label for="email">Email: </label></td>
                             <td>
-                                <li class="field">
+                                <div class="field">
 
                                     <input disabled id="email" class="input wide" type="email" name="email" value="<?=$email?>">
-                                </li>
+                                </div>
                             </td>
                         </tr>
 
@@ -290,10 +290,10 @@ if(isset($_POST['update'])) {
 
                             <td><label for="addr">Address: </label></td>
                             <td>
-                                <li class="field">
+                                <div class="field">
 
                                     <input required id="addr" class="input wide" type="text" name="addr" value="<?=$addr?>">
-                                </li>
+                                </div>
                             </td>
                         </tr>
 
@@ -303,10 +303,10 @@ if(isset($_POST['update'])) {
 
                             <td><label for="dob">DOB: </label></td>
                             <td>
-                                <li class="field">
+                                <div class="field">
 
                                     <input id="dob" disabled class="input wide" type="text" value="<?=$dob?>">
-                                </li>
+                                </div>
                             </td>
                         </tr>
 
@@ -315,10 +315,10 @@ if(isset($_POST['update'])) {
                             <td><label for="image">Profile Pic: </label></td>
                             <td>
                                 
-                                <li class="field">
+                                <div class="field">
                                     <input type="file" name="pic" class="input wide">
                                     <em style="color: grey;">Optional</em>
-                                </li>
+                                </div>
                                 
                             </td>
                             
@@ -327,20 +327,23 @@ if(isset($_POST['update'])) {
                         <tr>
                             <td><label for="pass">Change Password: </label></td>
                             <td>
-                                <li class="field">
+                                <div class="field">
                                     <input type="password" name="new_pass" class="input wide" placeholder="New Password"> <em style="color: grey;">Optional</em>
-                                </li>
+                                </div>
                             </td>
                         </tr>
                         <tr><td colspan="2">Enter Your Password Below to Update your Profile:</td></tr>
                         <tr>
                             <td colspan="2">
-                               <li class="field">
+                               <div class="field">
                                 <input type="password" name="current_pass" required placeholder="Password" class="input narrow">
-                               </li>
+                               </div>
                             </td>
                             
                         </tr>
+                       
+                       
+                      
                        
                     </table>
 

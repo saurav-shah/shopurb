@@ -7,7 +7,15 @@
             <div class="bold">LEGAL</div><br/>
                     <a href="terms.php">Terms and Conditions</a><br/>
             <a href="privacypolicy.php">Privacy Policy</a><br/>
-               <a href="faq.php">FAQ</a>
+               <a href="faq.php">FAQ</a><br/>
+               <?php
+                    
+                    if(isset($_SESSION['cust_id'])){
+                        echo '<a href="feedback.php">Provide Feedback</a>';
+                    }
+                ?>
+               
+               
                 </div>
                 <div class=" three columns">
                 <div class="bold">LINKS</div><br/>

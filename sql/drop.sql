@@ -21,6 +21,8 @@ DROP TABLE shop cascade constraints;
 
 DROP TABLE users cascade constraints;
 
+DROP TABLE feedback cascade constraints;
+
 DROP SEQUENCE user_id;
 
 DROP SEQUENCE prod_id;
