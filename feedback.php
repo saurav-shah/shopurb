@@ -55,7 +55,9 @@ if(isset($_POST['submit'])){
     include('searchetc.php');?> 
 <div id="wrapper">
     <div class="row">
-    
+    <header>
+    <h2>Customer Feedback</h2>
+    </header>
 
         <form action="" method="post">
             <ul style="margin-top: 20px;">
