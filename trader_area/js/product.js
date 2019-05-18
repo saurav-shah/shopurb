@@ -108,8 +108,16 @@ function getRecord(actionName, id){
                     $form.find('.min_order').val(response.min_order);
                     $form.find('.max_order').val(response.max_order);
                     $form.find('.discount').val(response.dis);
-                    $form.find('.min_order').attr('max',response.stock - 1);
-                    $form.find('.max_order').attr('max',response.stock - 1);
+                    
+                    $max = $form.find('.stock').val() - 1;
+                    if($max > 1) {
+
+                        $form.find('.min_order').attr('max',$max);
+                        $form.find('.max_order').attr('max',$max);
+                    }
+    
+                    //$form.find('.min_order').attr('max',response.stock - 1);
+                   // $form.find('.max_order').attr('max',response.stock - 1);
                     $modal.modal('show');
                 
                 }

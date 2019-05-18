@@ -3,7 +3,7 @@ create or replace Package Pkg_Security Is
   Function Authenticate_User(p_User_Name Varchar2
                             ,p_Password  Varchar2) Return Boolean;
  
-  -----
+  
   Procedure Process_Login(p_User_Name Varchar2
                          ,p_Password  Varchar2
                          ,p_App_Id    Number);
@@ -44,7 +44,7 @@ create or replace Package Body Pkg_Security Is
                                    ,'Please enter Username and password.');
         Return False;
      End If;
-     ----
+    
      Begin
         Select u.Status
               ,u.Verified
@@ -83,19 +83,19 @@ create or replace Package Body Pkg_Security Is
                                    ,'Your account is not verified! Check your Email!');
         Return False;
      End If;
-     ---
+     
      -- Write user information to Session.
-     --
+     
      Apex_Util.Set_Session_State('SESSION_USERNAME'
                                 ,p_User_Name);
      Apex_Util.Set_Session_State('SESSION_USER_ID'
                                 ,v_User_id);
-     ---
-     ---
+     
+     
      Return True;
   End;
  
-  --------------------------------------
+  
   Procedure Process_Login(p_User_Name Varchar2
                          ,p_Password  Varchar2
                          ,p_App_Id    Number) As
