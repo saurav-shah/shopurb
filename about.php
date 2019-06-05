@@ -26,8 +26,7 @@ include 'functions/functions.php';
     </header>
     </div>
 
-    <div class="row">
-    
+    <div class="row">    
     <p>
     Launched in 2019, Shopurb is e-commerce site and premium online shopping marketplace with an active presence in Halifax, Cleckheaton, Dewsbury.
 Supported by a wide range of tailored marketing, data and service solutions, Shopurb has 30.000 sellers and 50 brands and serves 5 million consumers across the region.
