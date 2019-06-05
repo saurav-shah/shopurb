@@ -61,7 +61,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     
     oci_execute(oci_parse($con, $sql));
         
-        
     
     
 }
@@ -100,7 +99,7 @@ else {
     <h2>Thank You For Your Purchase!</h2>
     
           <center><strong>Your order has been placed successfully.</strong></center>
-          <form action="generate_pdf.php" method="post" enctype="multipart/form-data">
+          <form target="_blank" action="generate_pdf.php" method="post" enctype="multipart/form-data">
               
              <?php
                 $subtotal = 0;

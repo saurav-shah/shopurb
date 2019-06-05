@@ -145,6 +145,7 @@ if(isset($_POST['login'])){
 
 
                     </form>
+                    
                     <center style="color:red;"><?php echo $error; ?></center>
                 </div>
             </div>

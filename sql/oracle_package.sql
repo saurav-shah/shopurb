@@ -89,8 +89,7 @@ create or replace Package Body Pkg_Security Is
      Apex_Util.Set_Session_State('SESSION_USERNAME'
                                 ,p_User_Name);
      Apex_Util.Set_Session_State('SESSION_USER_ID'
-                                ,v_User_id);
-     
+                                ,v_User_id);     
      
      Return True;
   End;
@@ -118,7 +117,10 @@ create or replace Package Body Pkg_Security Is
  
 End Pkg_Security;
 
- 
-
-
-
+-- Login Page Logo Custom Css
+span.t-Login-logo {
+    background-image: url(#APP_IMAGES#resized.png);
+    background-size: cover;
+    width: 200px;
+    height: 200px;
+}

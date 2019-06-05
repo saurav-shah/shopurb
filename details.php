@@ -70,7 +70,7 @@ include ('functions/functions.php');
                     $min_order = $row['MIN_ORDER'];
                     $max_order = $row['MAX_ORDER'];
                     $stock = $row['STOCK'];
-                    $in_stock =($stock != 1)?true:false;
+                    $in_stock =($stock > 1)?true:false;
                     
                     if($in_stock){
                         $stock_status = 'In Stock';
@@ -129,7 +129,7 @@ include ('functions/functions.php');
                         <div class='tab-content active'>
                             <p style=' color: $color; font-weight:bold; font-size: 23px;'>$stock_status</p>
                             <p>$prod_desc</p>
-                            <p>Minmun Order: $min_order</p>
+                            <p>Minimun Order: $min_order</p>
                             <p>Maximum Order: $max_order</p>
                         </div>
 
@@ -185,7 +185,7 @@ include ('functions/functions.php');
                         <div class='tab-content active'>
                             <p style='color: $color; font-weight: bold; font-size: 23px;'>$stock_status</p>
                             <p>$prod_desc</p>
-                            <p>Minmun Order: $min_order</p>
+                            <p>Minimun Order: $min_order</p>
                             <p>Maximum Order: $max_order</p>
                             
                            

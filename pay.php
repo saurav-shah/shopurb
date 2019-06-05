@@ -12,7 +12,7 @@ require_once('includes/db.php');
        $c_id = $_SESSION['cust_id'];
        $collection_slot = $slot.' ('.$time.')';
        $payment_status = 'Unpaid';
-       $invoice_no = mt_rand(1000,9999); 
+       $invoice_no = mt_rand(1000,9999);
         
         $check_slot = "select * from orders where collection_slot = '$collection_slot'";
         $prep = oci_parse($con, $check_slot);
@@ -83,7 +83,7 @@ require_once('includes/db.php');
 
         <input type="hidden" name="cmd" value="_cart">
         <input type="hidden" name="upload" value="1">
-        <input type="hidden" name="business" value="seller1@shopurb.com">
+        <input type="hidden" name="business" value="s4ur4b-facilitator@gmail.com">
         <input type="hidden" name="currency_code" value="USD">
 
 
